@@ -5,7 +5,7 @@
 date_default_timezone_set('America/Sao_Paulo');
 
 const LOTE_1_ATE = '2026-08-25 23:59:59';
-const CHECKOUT_BASE = 'https://faculdade.ufape.com.br/cart/add/535-662';
+const CHECKOUT_BASE = 'https://faculdade.ufape.com.br/cart/add';
 const WHATSAPP_SECRETARIA = '5511974928443';
 const WEBHOOK_INSCRICAO = 'https://webhook.thegrowthhub.app.br/webhook/4ded9a37-413e-4c04-a6f0-ac3d554bb0a7';
 
@@ -18,7 +18,7 @@ $categorias = [
     'geral'  => 'Demais participantes',
 ];
 
-// checkout_id é o id do curso no carrinho da faculdade (cart/add/535-662-<ids separados por hífen>).
+// checkout_id é o id do curso no carrinho da faculdade (cart/add/<ids separados por hífen>).
 $modalidades = [
     'presencial' => [
         'titulo'      => 'Presencial',
@@ -104,5 +104,5 @@ function url_checkout(string $modalidade, array $workshops, string $lote): strin
         }
     }
 
-    return CHECKOUT_BASE . '-' . implode('-', $ids) . '?' . utm_checkout($lote);
+    return CHECKOUT_BASE . '/' . implode('-', $ids) . '?' . utm_checkout($lote);
 }

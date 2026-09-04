@@ -36,7 +36,7 @@
     function urlCheckout() {
         const ids = [dados.modalidades[modalidade].checkoutId];
         workshopsMarcados().forEach((id) => ids.push(dados.workshops[id].checkoutId));
-        return dados.checkoutBase + '-' + ids.join('-') + '?' + dados.utm;
+        return dados.checkoutBase + '/' + ids.join('-') + '?' + dados.utm;
     }
 
     function urlWhatsapp() {
