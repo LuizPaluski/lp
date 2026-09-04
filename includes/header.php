@@ -1,6 +1,7 @@
 <?php
 $esquema = ($_SERVER['HTTPS'] ?? 'off') === 'off' ? 'http' : 'https';
-$url_base = $esquema . '://' . $_SERVER['HTTP_HOST'];
+// a página roda numa subpasta do site da faculdade, então a base inclui o diretório
+$url_base = $esquema . '://' . $_SERVER['HTTP_HOST'] . rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
