@@ -942,6 +942,12 @@ html {
         gap: 5px;
     }
 
+    /* empilhado não há coluna para alinhar: o retrato volta para dentro do card */
+    .agenda .palestrante:has(img),
+    .agenda .palestrante:has(img + img) {
+        margin-left: 0;
+    }
+
     .titulo-secao {
         font-size: 24px;
     }
