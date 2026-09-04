@@ -14,19 +14,6 @@ $lp = $no_sistema ? rtrim(base_url(PASTA_NO_SITE), '/') : '.';
 require __DIR__ . ($no_sistema ? '/includes/header-sistema.php' : '/includes/header.php');
 ?>
 
-<div class="lp-nav">
-    <div class="lp-container">
-        <nav>
-            <a href="#programacao">Programação</a>
-            <a href="#workshops">Workshops</a>
-            <a href="#investimento">Investimento</a>
-            <a href="#palestrantes">Palestrantes</a>
-            <a href="#faq">Dúvidas</a>
-        </nav>
-        <a class="lp-nav-bt" href="#investimento">Inscreva-se</a>
-    </div>
-</div>
-
 <section class="hero">
     <div class="lp-container">
         <div>
