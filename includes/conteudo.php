@@ -29,7 +29,7 @@ $palestrantes = [
     ['nome' => 'Dra. Flavia Mazzo',                    'tema' => 'Arritmias na internação e seu tratamento',                           'foto' => 'flavia.jpg'],
     ['nome' => 'Dra. Mayara Travalini',                'tema' => 'Anestesia no paciente cardiopata',                                   'foto' => 'mayara.jpg'],
     ['nome' => 'MSc. Adalberto Monteiro',              'tema' => 'Anticoagulação: o que temos de evidência nos pacientes cardiopatas', 'foto' => 'adalberto.jpg'],
-    ['nome' => 'M.V. Jenif da Rocha Esposito Martins', 'tema' => 'Edema pulmonar cardiogênico no pronto atendimento',                  'foto' => 'jeniff.jpg'],
+    ['nome' => 'M.V. Jennif da Rocha Esposito Martins', 'tema' => 'Edema pulmonar cardiogênico no pronto atendimento',                  'foto' => 'jeniff.jpg'],
     ['nome' => 'Dra. Ticiane Giselle Bitencourt',      'tema' => 'Nutrição no paciente cardiopata na internação / UTI',                'foto' => 'ticiane.jpg'],
 ];
 
@@ -40,7 +40,7 @@ $programacao = [
         ['10h00 às 11h00', 'Guia terapêutico do B2 ao D', 'Dr. Matheus Matioli Mantovani'],
         ['11h00 às 11h30', 'Intervalo', ''],
         ['11h30 às 12h30', 'POCUS direcionado ao cardiopata', 'M.V. Djalmo Pietruka'],
-        ['12h30 às 13h00', 'Abordagem inicial do edema pulmonar cardiogênico no pronto atendimento', 'M.V. Jenif da Rocha Esposito Martins'],
+        ['12h30 às 13h00', 'Abordagem inicial do edema pulmonar cardiogênico no pronto atendimento', 'M.V. Jennif da Rocha Esposito Martins'],
         ['13h00 às 14h30', 'Intervalo, demonstrativo POCUS', 'M.V. Renan Matheus Duarte e M.V. Djalmo Pietruka'],
         ['14h30 às 15h30', 'Da oxigenoterapia à ventilação mecânica', 'MSc. Adalberto Monteiro'],
         ['15h30 às 16h30', 'Desmame da ventilação mecânica pós edema cardiogênico', 'M.V. Renan Matheus Duarte'],
@@ -51,8 +51,8 @@ $programacao = [
         ['19h30 às 01h00', 'Coquetel', 'Rooftop'],
     ],
     '11 de outubro de 2026' => [
-        ['09h00 às 10h00', 'Principais cardiopatias congênitas e seu tratamento', 'M.V. Diego Lessa (a confirmar)'],
-        ['10h00 às 11h00', 'Intervencionismo cardiológico', 'M.V. Guilherme Goldfeder (a confirmar)'],
+        ['09h00 às 10h00', 'Principais cardiopatias congênitas e seu tratamento', 'A confirmar'],
+        ['10h00 às 11h00', 'Intervencionismo cardiológico', 'A confirmar'],
         ['11h00 às 12h00', 'Manejo do felino com cardiopatia hipertrófica', 'M.V. Ariane Oliveira'],
         ['12h00 às 13h00', 'Anticoagulação: o que temos de evidência nos pacientes cardiopatas', 'MSc. Adalberto Monteiro'],
         ['13h00 às 14h00', 'Intervalo demonstrativo, demonstração VXE', 'M.V. Djalmo Pietruka'],
