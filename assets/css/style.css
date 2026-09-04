@@ -831,6 +831,7 @@ html {
 
 .popup .opcao .valor {
     font-weight: 900;
+    white-space: nowrap;
     color: var(--azul);
 }
 
@@ -863,6 +864,15 @@ html {
     line-height: 1.7;
     background-color: var(--fundo);
     border-radius: 10px;
+}
+
+.popup .rodape-popup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid var(--linha);
 }
 
 .popup .total .rotulo-total {
@@ -915,31 +925,107 @@ html {
 }
 
 @media (max-width: 767px) {
-
-    /* min-width zerado para o nav rolar em vez de empurrar a página. */
+    .lp-container {
+        padding: 0 20px;
+    }
 
     .secao {
         padding: 45px 0;
     }
 
+    /* a faixa do título sangra até a borda: o texto precisa de folga própria */
+    .titulo-secao {
+        font-size: 22px;
+        padding-left: 10px;
+        margin-bottom: 30px;
+    }
+
+    .hero {
+        padding: 40px 0;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero .subtitulo {
+        font-size: 20px;
+    }
+
+    .publico-alvo h2,
+    .chamada-final h2 {
+        font-size: 24px;
+    }
+
     .lista-diferenciais,
     .grade-palestrantes,
-    .inclusos,
-    .faixa-numeros .lp-container {
+    .inclusos {
         grid-template-columns: 1fr;
+    }
+
+    .faixa-numeros .lp-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .agenda .linha,
+    .card-workshop li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    .lp-card {
+        padding: 22px 20px;
     }
 
     .card-preco .nota {
         min-height: 0;
     }
 
-    .chamada-final h2 {
-        font-size: 26px;
+    .card-preco .preco b {
+        font-size: 23px;
+    }
+
+    .fotos-clinica img {
+        height: 220px;
+    }
+
+    .faq summary,
+    .faq .resposta {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .popup .caixa {
+        max-height: 92vh;
     }
 
     .popup .corpo,
     .popup .topo {
         padding-left: 20px;
         padding-right: 20px;
+    }
+
+    .popup .opcao {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .popup .rodape-popup .bt {
+        padding: 0 22px;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .faixa-numeros .lp-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero .bts .bt {
+        width: 100%;
     }
 }
