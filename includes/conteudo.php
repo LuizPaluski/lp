@@ -35,6 +35,23 @@ $palestrantes = [
 
 $fotos_palestrantes = array_column($palestrantes, 'foto', 'nome');
 
+// uma linha da agenda pode citar mais de um palestrante
+function retratos_da_linha(string $quem): array
+{
+    global $fotos_palestrantes;
+
+    $retratos = [];
+    foreach ($fotos_palestrantes as $nome => $foto) {
+        $onde = strpos($quem, $nome);
+        if ($onde !== false) {
+            $retratos[$onde] = $foto;
+        }
+    }
+    ksort($retratos);
+
+    return array_values($retratos);
+}
+
 $programacao = [
     '10 de outubro de 2026' => [
         ['08h30 às 09h00', 'Abertura', ''],

@@ -90,9 +90,9 @@ require __DIR__ . ($no_sistema ? '/includes/header-sistema.php' : '/includes/hea
                         <span class="hora"><?= $hora ?></span>
                         <span class="atividade"><?= $atividade ?></span>
                         <span class="palestrante">
-                            <?php if (isset($fotos_palestrantes[$quem])): ?>
-                                <img src="<?= $lp ?>/assets/img/<?= $fotos_palestrantes[$quem] ?>" alt="" loading="lazy">
-                            <?php endif; ?>
+                            <?php foreach (retratos_da_linha($quem) as $retrato): ?>
+                                <img src="<?= $lp ?>/assets/img/<?= $retrato ?>" alt="" loading="lazy">
+                            <?php endforeach; ?>
                             <?= $quem ?>
                         </span>
                     </div>
