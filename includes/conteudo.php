@@ -31,6 +31,7 @@ $palestrantes = [
     ['nome' => 'MSc. Adalberto Monteiro',              'tema' => 'Anticoagulação: o que temos de evidência nos pacientes cardiopatas', 'foto' => 'adalberto.jpg'],
     ['nome' => 'M.V. Jennif da Rocha Esposito Martins', 'tema' => 'Edema pulmonar cardiogênico no pronto atendimento',                  'foto' => 'jeniff.jpg'],
     ['nome' => 'Dra. Ticiane Giselle Bitencourt',      'tema' => 'Nutrição no paciente cardiopata na internação / UTI',                'foto' => 'ticiane.jpg'],
+    ['nome' => 'M.V. Ariane Oliveira',                 'tema' => 'Manejo do felino com cardiopatia hipertrófica',                      'foto' => 'ariane.jpg'],
 ];
 
 $fotos_palestrantes = array_column($palestrantes, 'foto', 'nome');
