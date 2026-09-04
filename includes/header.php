@@ -52,7 +52,7 @@ $menu_site = [
     <link rel="icon" type="image/x-icon" href="<?= $site ?>/favicon.ico">
 
     <!-- estilo do simpósio: depois do estilo do site, para poder sobrescrever -->
-    <link rel="stylesheet" href="<?= $lp ?>/assets/css/style.css">
+    <link rel="stylesheet" href="<?= $lp ?>/assets/css/style.css?v=<?= filemtime(__DIR__ . '/../assets/css/style.css') ?>">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="<?= $estilo ?>/components/popper/popper.min.js"></script>

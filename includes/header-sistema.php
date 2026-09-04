@@ -51,7 +51,7 @@ if ($this->input->get('utm_source')) {
     <link href="<?php echo site_url('assets/front/intercursos/components/fontawesome/css/solid.min.css'); ?>" rel="stylesheet">
 
     <!-- estilo do simpósio: entra depois do estilo do site para poder sobrescrever -->
-    <link rel="stylesheet" type="text/css" href="<?= $lp; ?>/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?= $lp; ?>/assets/css/style.css?v=<?= filemtime(__DIR__ . '/../assets/css/style.css'); ?>">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 

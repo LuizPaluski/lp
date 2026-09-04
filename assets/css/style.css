@@ -269,7 +269,7 @@ html {
     position: relative;
     z-index: 1;
     margin-bottom: 45px;
-    padding: 12px 0;
+    padding: 12px 0 12px 22px;
     font-size: 32px;
     font-weight: 700;
     text-transform: uppercase;
@@ -936,7 +936,7 @@ html {
     /* a faixa do título sangra até a borda: o texto precisa de folga própria */
     .titulo-secao {
         font-size: 22px;
-        padding-left: 10px;
+        padding-left: 18px;
         margin-bottom: 30px;
     }
 
