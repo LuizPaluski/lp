@@ -61,6 +61,7 @@ $menu_site = [
         var fullpath = '<?= $site ?>/';
     </script>
     <script src="<?= $estilo ?>/js/main.js"></script>
+    <script src="<?= $lp ?>/assets/js/mini-carrinho.js" defer></script>
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -123,11 +124,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="lk"><a href="<?= $site ?>/account/login">Portal <br> do aluno</a></div>
                 </div>
                 <div class="cols r">
-                    <div class="lks-mini-cart">
+                    <div class="lks-mini-cart" data-carrinho="<?= $site ?>/cart">
                         <div class="lk-dif-r">
                             <div class="lk"><a href="<?= $site ?>/account/login">Portal <br> do aluno</a></div>
                         </div>
-                        <a href="<?= $site ?>/cart" class="mini-cart lp-carrinho">0 Item</a>
+                        <div class="dropdown_">
+                            <button type="button" class="mini-cart" id="dropdownMiniCart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                0 Item
+                            </button>
+                            <div class="dropdown-menu c-mini-cart" aria-labelledby="dropdownMiniCart">
+                                <div class="items">
+                                    <div class="item nenhum">O carrinho está vazio</div>
+                                </div>
+                                <div class="subtotal">
+                                    <div class="lab">subtotal</div>
+                                    <div class="val">R$ <span class="mini-val">0,00</span></div>
+                                </div>
+                                <div class="bts">
+                                    <a href="<?= $site ?>/cart" class="icon-checkout">Finalizar compra</a>
+                                </div>
+                            </div>
+                        </div>
                         <a href="javascript:;" class="sh-mn-resp js-btMenu"></a>
                     </div>
                 </div>
