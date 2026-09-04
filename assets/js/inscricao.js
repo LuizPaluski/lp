@@ -149,7 +149,7 @@
         });
 
         // sendBeacon porque a página sai do ar em seguida: um fetch comum seria abortado.
-        navigator.sendBeacon('inscricao.php', new Blob([lead], { type: 'application/json' }));
+        navigator.sendBeacon(dados.endpoint, new Blob([lead], { type: 'application/json' }));
 
         if (paraWhatsapp) {
             window.open(urlWhatsapp(), '_blank', 'noopener,noreferrer');

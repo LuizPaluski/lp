@@ -1,6 +1,6 @@
 <div class="rodape">
-    <div class="container">
-        <div class="marcador"><img src="assets/img/footer-marker.png" alt=""></div>
+    <div class="lp-container">
+        <div class="marcador"><img src="<?= $lp ?>/assets/img/footer-marker.png" alt=""></div>
         <div class="colunas">
             <div class="endereco">
                 <div class="titulo">FACULDADE UFAPE</div>
@@ -33,6 +33,6 @@
     </div>
 </div>
 
-<script src="assets/js/inscricao.js"></script>
+<script src="<?= $lp ?>/assets/js/inscricao.js"></script>
 </body>
 </html>

@@ -70,6 +70,7 @@
 <script>
 window.SIMPOSIO = <?= json_encode([
     'lote'          => $lote,
+    'endpoint'      => $lp . '/inscricao.php',
     'checkoutBase'  => CHECKOUT_BASE,
     'utm'           => utm_checkout($lote),
     'whatsapp'      => WHATSAPP_SECRETARIA,

@@ -9,6 +9,9 @@ date_default_timezone_set('America/Sao_Paulo');
 // diferente do que o checkout cobra.
 const LOTE_VIGENTE = '1';
 
+// Pasta em que a página fica publicada dentro do site da faculdade.
+const PASTA_NO_SITE = 'simposio-plantonista';
+
 const CHECKOUT_BASE = 'https://faculdade.ufape.com.br/cart/add';
 const WHATSAPP_SECRETARIA = '5511974928443';
 const WEBHOOK_INSCRICAO = 'https://webhook.thegrowthhub.app.br/webhook/4ded9a37-413e-4c04-a6f0-ac3d554bb0a7';
