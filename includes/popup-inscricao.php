@@ -1,4 +1,4 @@
-<?php $lote = lote_vigente(); ?>
+<?php $lote = LOTE_VIGENTE; ?>
 <div class="popup" id="popup-inscricao" role="dialog" aria-modal="true" aria-labelledby="popup-titulo">
     <div class="caixa">
         <div class="topo">

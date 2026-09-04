@@ -2,7 +2,7 @@
 require __DIR__ . '/includes/dados.php';
 require __DIR__ . '/includes/conteudo.php';
 
-$lote = lote_vigente();
+$lote = LOTE_VIGENTE;
 $outro_lote = $lote === '1' ? '2' : '1';
 
 require __DIR__ . '/includes/header.php';
@@ -138,13 +138,8 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
         <h2 class="titulo-secao">Escolha a sua <span>modalidade</span></h2>
         <p class="intro">
-            <?php if ($lote === '1'): ?>
-                Primeiro lote válido até 25.08.2026. Pagamento via Pix, boleto à vista ou cartão em até 3x sem juros
-                (4 a 10x com juros).
-            <?php else: ?>
-                Valores do segundo lote. Pagamento via Pix, boleto à vista ou cartão em até 3x sem juros
-                (4 a 10x com juros).
-            <?php endif; ?>
+            Valores do <?= $lote === '1' ? 'primeiro' : 'segundo' ?> lote. Pagamento via Pix, boleto à vista
+            ou cartão em até 3x sem juros (4 a 10x com juros).
         </p>
 
         <div class="grade-precos">

@@ -28,7 +28,7 @@ $workshops = array_values(array_intersect(
     array_keys($workshops_opcionais)
 ));
 
-$lote  = lote_vigente();
+$lote  = LOTE_VIGENTE;
 $total = total_centavos($modalidade, $categoria, $workshops, $lote);
 
 $destino = in_array($categoria, CATEGORIAS_COM_VINCULO, true) ? 'whatsapp' : 'checkout';

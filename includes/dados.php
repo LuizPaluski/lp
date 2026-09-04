@@ -4,7 +4,11 @@
 
 date_default_timezone_set('America/Sao_Paulo');
 
-const LOTE_1_ATE = '2026-08-25 23:59:59';
+// Lote vigente na tabela de preços. Trocar para '2' no mesmo dia em que os valores
+// forem atualizados no carrinho da faculdade: a página não pode anunciar um preço
+// diferente do que o checkout cobra.
+const LOTE_VIGENTE = '1';
+
 const CHECKOUT_BASE = 'https://faculdade.ufape.com.br/cart/add';
 const WHATSAPP_SECRETARIA = '5511974928443';
 const WEBHOOK_INSCRICAO = 'https://webhook.thegrowthhub.app.br/webhook/4ded9a37-413e-4c04-a6f0-ac3d554bb0a7';
@@ -58,11 +62,6 @@ $workshops_opcionais = [
     'atriosseptostomia'=> ['titulo' => 'Atriosseptostomia (09/10)',                   'valor' => 348000, 'checkout_id' => '68626'],
     'ventilacao'       => ['titulo' => 'Ventilação mecânica no ICC esquerdo (09/10)', 'valor' => 135000, 'checkout_id' => '68627'],
 ];
-
-function lote_vigente(): string
-{
-    return time() <= strtotime(LOTE_1_ATE) ? '1' : '2';
-}
 
 function formatar_brl(int $centavos): string
 {
