@@ -138,26 +138,27 @@
         btEnviar.textContent = 'Enviando...';
 
         const paraWhatsapp = comVinculoUfape();
-        // A janela precisa abrir dentro do clique, senão o navegador bloqueia.
-        window.open(paraWhatsapp ? urlWhatsapp() : urlCheckout(), '_blank', 'noopener,noreferrer');
-
-        fetch('inscricao.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                nome: nome.value.trim(),
-                telefone: telefone.value.trim(),
-                categoria: categoria(),
-                modalidade: modalidade,
-                workshops: workshopsMarcados(),
-                destino: paraWhatsapp ? 'whatsapp' : 'checkout',
-                origem: window.location.href
-            }),
-            keepalive: true
-        }).finally(() => {
-            enviando = false;
-            btEnviar.textContent = paraWhatsapp ? 'Falar no WhatsApp' : 'Ir para o checkout';
-            fechar();
+        const lead = JSON.stringify({
+            nome: nome.value.trim(),
+            telefone: telefone.value.trim(),
+            categoria: categoria(),
+            modalidade: modalidade,
+            workshops: workshopsMarcados(),
+            destino: paraWhatsapp ? 'whatsapp' : 'checkout',
+            origem: window.location.href
         });
+
+        // sendBeacon porque a página sai do ar em seguida: um fetch comum seria abortado.
+        navigator.sendBeacon('inscricao.php', new Blob([lead], { type: 'application/json' }));
+
+        if (paraWhatsapp) {
+            window.open(urlWhatsapp(), '_blank', 'noopener,noreferrer');
+            enviando = false;
+            btEnviar.textContent = 'Falar no WhatsApp';
+            fechar();
+            return;
+        }
+
+        window.location.href = urlCheckout();
     });
 })();
