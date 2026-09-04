@@ -33,6 +33,8 @@ $palestrantes = [
     ['nome' => 'Dra. Ticiane Giselle Bitencourt',      'tema' => 'Nutrição no paciente cardiopata na internação / UTI',                'foto' => 'ticiane.jpg'],
 ];
 
+$fotos_palestrantes = array_column($palestrantes, 'foto', 'nome');
+
 $programacao = [
     '10 de outubro de 2026' => [
         ['08h30 às 09h00', 'Abertura', ''],

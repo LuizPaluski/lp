@@ -397,8 +397,21 @@ html {
 }
 
 .agenda .palestrante {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 14px;
     color: var(--cinza);
+}
+
+.agenda .palestrante img {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    border: 2px solid var(--azul-claro);
 }
 
 /* Workshops ----------------------------------------------------------------- */

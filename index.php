@@ -89,7 +89,12 @@ require __DIR__ . ($no_sistema ? '/includes/header-sistema.php' : '/includes/hea
                     <div class="linha">
                         <span class="hora"><?= $hora ?></span>
                         <span class="atividade"><?= $atividade ?></span>
-                        <span class="palestrante"><?= $quem ?></span>
+                        <span class="palestrante">
+                            <?php if (isset($fotos_palestrantes[$quem])): ?>
+                                <img src="<?= $lp ?>/assets/img/<?= $fotos_palestrantes[$quem] ?>" alt="" loading="lazy">
+                            <?php endif; ?>
+                            <?= $quem ?>
+                        </span>
                     </div>
                 <?php endforeach; ?>
             </div>
