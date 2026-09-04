@@ -374,8 +374,8 @@ html {
 
 .agenda .linha {
     display: grid;
-    grid-template-columns: 150px 1fr 250px;
-    gap: 20px;
+    grid-template-columns: 150px 1fr 290px;
+    gap: 30px;
     padding: 18px 25px;
     border-bottom: 1px solid var(--linha);
 }
@@ -402,6 +402,15 @@ html {
     gap: 10px;
     font-size: 14px;
     color: var(--cinza);
+}
+
+/* o retrato ocupa a folga à esquerda: assim os nomes ficam todos na mesma coluna */
+.agenda .palestrante:has(img) {
+    margin-left: -44px;
+}
+
+.agenda .palestrante:has(img + img) {
+    margin-left: -88px;
 }
 
 .agenda .palestrante img {
