@@ -12,20 +12,12 @@
     let modalidade = null;
     let enviando = false;
 
-    function categoria() {
-        return popup.querySelector('input[name="categoria"]:checked').value;
-    }
-
     function workshopsMarcados() {
         return Array.from(popup.querySelectorAll('input[name="workshop"]:checked')).map((c) => c.value);
     }
 
-    function comVinculoUfape() {
-        return dados.comVinculo.includes(categoria());
-    }
-
     function totalCentavos() {
-        const base = dados.modalidades[modalidade].precos[categoria()];
+        const base = dados.modalidades[modalidade].preco;
         return workshopsMarcados().reduce((soma, id) => soma + dados.workshops[id].valor, base);
     }
 
@@ -37,21 +29,6 @@
         const ids = [dados.modalidades[modalidade].checkoutId];
         workshopsMarcados().forEach((id) => ids.push(dados.workshops[id].checkoutId));
         return dados.checkoutBase + '/' + ids.join('-') + '?' + dados.utm;
-    }
-
-    function urlWhatsapp() {
-        const linhas = [
-            'Olá! Quero me inscrever no Simpósio Plantonista Veterinário UFAPE (Cardiologia).',
-            '',
-            'Nome: ' + nome.value.trim(),
-            'Telefone: ' + telefone.value.trim(),
-            'Categoria: ' + dados.categorias[categoria()],
-            'Modalidade: ' + dados.modalidades[modalidade].titulo,
-            'Workshops: ' + (titulosWorkshops().join(', ') || 'nenhum'),
-            'Lote: ' + dados.lote + 'º',
-            'Total estimado: ' + brl(totalCentavos())
-        ];
-        return 'https://wa.me/' + dados.whatsapp + '?text=' + encodeURIComponent(linhas.join('\n'));
     }
 
     function titulosWorkshops() {
@@ -107,15 +84,13 @@
         if (e.key === 'Escape' && popup.classList.contains('aberto')) fechar();
     });
 
-    popup.querySelectorAll('input[name="categoria"], input[name="workshop"]').forEach((campo) => {
+    popup.querySelectorAll('input[name="workshop"]').forEach((campo) => {
         campo.addEventListener('change', atualizarTotal);
     });
 
     popup.querySelector('.js-continuar').addEventListener('click', () => {
-        popup.querySelector('.js-resumo-categoria').textContent = dados.categorias[categoria()];
         popup.querySelector('.js-resumo-workshops').textContent = titulosWorkshops().join(', ') || 'nenhum';
         popup.querySelector('.js-resumo-total').textContent = brl(totalCentavos());
-        btEnviar.textContent = comVinculoUfape() ? 'Falar no WhatsApp' : 'Ir para o checkout';
         mostrarEtapa(2);
         nome.focus();
     });
@@ -137,27 +112,16 @@
         enviando = true;
         btEnviar.textContent = 'Enviando...';
 
-        const paraWhatsapp = comVinculoUfape();
         const lead = JSON.stringify({
             nome: nome.value.trim(),
             telefone: telefone.value.trim(),
-            categoria: categoria(),
             modalidade: modalidade,
             workshops: workshopsMarcados(),
-            destino: paraWhatsapp ? 'whatsapp' : 'checkout',
             origem: window.location.href
         });
 
         // sendBeacon porque a página sai do ar em seguida: um fetch comum seria abortado.
         navigator.sendBeacon(dados.endpoint, new Blob([lead], { type: 'application/json' }));
-
-        if (paraWhatsapp) {
-            window.open(urlWhatsapp(), '_blank', 'noopener,noreferrer');
-            enviando = false;
-            btEnviar.textContent = 'Falar no WhatsApp';
-            fechar();
-            return;
-        }
 
         window.location.href = urlCheckout();
     });

@@ -13,11 +13,11 @@ const LOTE_VIGENTE = '1';
 const PASTA_NO_SITE = 'simposio-plantonista';
 
 const CHECKOUT_BASE = 'https://faculdade.ufape.com.br/cart/add';
-const WHATSAPP_SECRETARIA = '5511974928443';
 const WEBHOOK_INSCRICAO = 'https://webhook.thegrowthhub.app.br/webhook/4ded9a37-413e-4c04-a6f0-ac3d554bb0a7';
 
-// Categorias com vínculo UFAPE não passam pelo carrinho: a secretaria confere o vínculo no WhatsApp.
-const CATEGORIAS_COM_VINCULO = ['pos', 'cursos'];
+// O popup não pergunta o vínculo com a UFAPE: toda inscrição vai ao carrinho pelo
+// valor de demais participantes. Ex-aluno acerta a condição com a secretaria.
+const CATEGORIA_PADRAO = 'geral';
 
 $categorias = [
     'pos'    => 'Ex-aluno UFAPE pós-graduação',

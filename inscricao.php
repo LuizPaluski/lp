@@ -12,11 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $entrada = json_decode(file_get_contents('php://input'), true);
 
 $modalidade = $entrada['modalidade'] ?? '';
-$categoria  = $entrada['categoria'] ?? '';
+$categoria  = CATEGORIA_PADRAO;
 $nome       = trim($entrada['nome'] ?? '');
 $telefone   = trim($entrada['telefone'] ?? '');
 
-if (!isset($modalidades[$modalidade], $categorias[$categoria])
+if (!isset($modalidades[$modalidade])
     || mb_strlen($nome) < 3
     || strlen(preg_replace('/\D/', '', $telefone)) < 10) {
     http_response_code(422);
@@ -31,8 +31,6 @@ $workshops = array_values(array_intersect(
 $lote  = LOTE_VIGENTE;
 $total = total_centavos($modalidade, $categoria, $workshops, $lote);
 
-$destino = in_array($categoria, CATEGORIAS_COM_VINCULO, true) ? 'whatsapp' : 'checkout';
-
 $payload = [
     'nome'             => $nome,
     'telefone'         => $telefone,
@@ -44,14 +42,12 @@ $payload = [
     'lote'             => $lote,
     'total_centavos'   => $total,
     'total_formatado'  => formatar_brl($total),
-    'destino'          => $destino,
+    'destino'          => 'checkout',
     'origem'           => mb_substr($entrada['origem'] ?? '', 0, 500),
     'enviado_em'       => date('c'),
 ];
 
-if ($destino === 'checkout') {
-    $payload['checkout_url'] = url_checkout($modalidade, $workshops, $lote);
-}
+$payload['checkout_url'] = url_checkout($modalidade, $workshops, $lote);
 
 $ch = curl_init(WEBHOOK_INSCRICAO);
 curl_setopt_array($ch, [
