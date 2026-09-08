@@ -36,7 +36,7 @@ require __DIR__ . ($no_sistema ? '/includes/header-sistema.php' : '/includes/hea
             </div>
         </div>
         <div class="foto">
-            <img src="<?= $lp ?>/assets/img/hero-vet-portrait.jpg" alt="Médica veterinária avaliando paciente durante atendimento">
+            <img src="<?= $lp ?>/assets/img/hero-simposio.jpg" alt="Simpósio Plantonista Veterinário UFAPE, O Paciente Cardiológico">
         </div>
     </div>
 </section>

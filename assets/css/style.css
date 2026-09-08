@@ -224,8 +224,7 @@ html {
 
 .hero .foto img {
     width: 100%;
-    height: 460px;
-    object-fit: cover;
+    height: auto;
     border-radius: 20px;
 }
 
@@ -406,17 +405,17 @@ html {
 
 /* o retrato ocupa a folga à esquerda: assim os nomes ficam todos na mesma coluna */
 .agenda .palestrante:has(img) {
-    margin-left: -44px;
+    margin-left: -50px;
 }
 
 .agenda .palestrante:has(img + img) {
-    margin-left: -88px;
+    margin-left: -100px;
 }
 
 .agenda .palestrante img {
     flex-shrink: 0;
-    width: 34px;
-    height: 34px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     object-fit: cover;
     object-position: top;
@@ -925,10 +924,6 @@ html {
 
     .hero h1 {
         font-size: 34px;
-    }
-
-    .hero .foto img {
-        height: 320px;
     }
 
     .faixa-numeros .lp-container,

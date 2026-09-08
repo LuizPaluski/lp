@@ -35,7 +35,7 @@ if ($this->input->get('utm_source')) {
     <meta property="og:description" content="Do atendimento inicial ao manejo avançado do paciente cardiológico. 10 e 11 de outubro de 2026, híbrido, com certificado UFAPE.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<?= current_url(); ?>">
-    <meta property="og:image" content="<?= $lp; ?>/assets/img/hero-vet-portrait.jpg">
+    <meta property="og:image" content="<?= $lp; ?>/assets/img/hero-simposio.jpg">
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/front/intercursos/components/bootstrap/4.4.1/css/bootstrap.min.css'); ?>">
