@@ -574,6 +574,11 @@ html {
     font-size: 14px;
 }
 
+.card-preco .publico.forte {
+    font-weight: 700;
+    color: var(--azul-escuro);
+}
+
 .card-preco .preco {
     display: flex;
     align-items: baseline;

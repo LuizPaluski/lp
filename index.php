@@ -164,7 +164,7 @@ require __DIR__ . ($no_sistema ? '/includes/header-sistema.php' : '/includes/hea
                     <div class="valores">
                         <?php foreach ($categorias as $cat_id => $cat_label): ?>
                             <div>
-                                <p class="publico"><?= $cat_label ?></p>
+                                <p class="publico<?= $cat_id === CATEGORIA_COM_CUPOM ? ' forte' : '' ?>"><?= $cat_label ?></p>
                                 <?php if ($cat_id === CATEGORIA_COM_CUPOM): ?>
                                     <p class="preco">
                                         <span class="selo-desconto"><?= desconto_em_texto() ?></span>

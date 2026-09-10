@@ -31,7 +31,7 @@ const PEDE_CUPOM = false;
 $cupons = ['cupomteste20'];
 
 $categorias = [
-    'pos'   => 'Alunos e Ex Alunos da Pós Graduação Ufape',
+    'pos'   => 'Alunos e Ex-Alunos da Pós Graduação Ufape',
     'geral' => 'Demais participantes',
 ];
 
