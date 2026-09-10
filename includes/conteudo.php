@@ -61,6 +61,32 @@ $curriculos = [
         'CardioIntensivista do Hospital Veterinário UFAPE',
         'Professor das pós-graduações da UFAPE Intercursos',
     ],
+    'Dra. Flavia Mazzo' => [
+        'Graduada em Medicina Veterinária pela Universidade Paulista',
+        'Mestre em Ciências Médicas com ênfase em cardiologia pela Faculdade de Medicina da USP',
+        'Revisora dos periódicos Revista Clínica Veterinária e Revista Nosso Clínico',
+    ],
+    'Dra. Mayara Travalini' => [
+        '2014, bacharel em Medicina Veterinária na UNESP de Botucatu',
+        '2017, residência em Anestesiologia Veterinária na UNESP de Botucatu',
+        '2019, pós-graduação em Anestesia Regional Veterinária no IEP Ranvier',
+        '2020, mestrado em Anestesiologia na Faculdade de Medicina da UNESP de Botucatu',
+        '2023 até hoje, chefe do setor de Anestesiologia da UFAPE',
+        '2023 até hoje, preceptora da residência em Anestesiologia da UFAPE',
+        '2023 até hoje, auxiliar de coordenação da pós-graduação em Anestesiologia da UFAPE',
+        '2024, doutorado em Anestesiologia na Faculdade de Medicina da UNESP de Botucatu',
+    ],
+    'MSc. Adalberto Monteiro' => [
+        'Pós-graduação lato sensu (residência) na FMVZ-USP, de 2005 a 2007',
+        'Pós-graduação stricto sensu (mestrado) na FMVZ-USP, de 2008 a 2010',
+    ],
+    'M.V. Jennif da Rocha Esposito Martins' => [
+        'Médica Veterinária formada pela Universidade Federal de Minas Gerais',
+        'Internato em UTI e internação na UFAPE de São Paulo',
+        'Pós-graduanda em Cardiologia Veterinária',
+        'Médica Veterinária na UTI e na internação da UFAPE de São Paulo',
+        'Curso de Urgência e Emergência na UFAPE de São Paulo',
+    ],
 ];
 
 
@@ -79,6 +105,25 @@ function retratos_da_linha(string $quem): array
     ksort($retratos);
 
     return array_values($retratos);
+}
+
+// Professores dos workshops do pré-simpósio. Foto vazia enquanto não chega o retrato.
+$professores_workshop = [
+    ['nome' => 'Guilherme Zupiroli',         'tema' => 'Balonamento arterial pulmonar',       'foto' => ''],
+    ['nome' => 'Dr. Alessandro Martins',     'tema' => 'Hemodinâmica básica e avançada',      'foto' => 'alessandro.jpg'],
+    ['nome' => 'Dr. Carlos Eduardo Bernini', 'tema' => 'Atriosseptostomia',                   'foto' => ''],
+    ['nome' => 'M.V. Renan Matheus Duarte',  'tema' => 'Ventilação mecânica no ICC esquerdo', 'foto' => 'renan.jpg'],
+];
+
+// iniciais no lugar do retrato de quem ainda não mandou foto
+function iniciais(string $nome): string
+{
+    $partes = array_values(array_filter(
+        explode(' ', $nome),
+        fn($p) => !in_array($p, ['Dr.', 'Dra.', 'M.V.', 'MSc.', 'Prof.', 'da', 'de', 'do'], true)
+    ));
+
+    return substr($partes[0], 0, 1) . substr(end($partes), 0, 1);
 }
 
 $programacao = [

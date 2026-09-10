@@ -8,12 +8,13 @@
     const foto = popup.querySelector('.js-cv-foto');
     const itens = popup.querySelector('.js-cv-itens');
 
-    function abrir(indice) {
-        const p = dados[indice];
+    function abrir(bt) {
+        const p = dados[bt.dataset.quem];
         if (!p) return;
 
         nome.textContent = p.nome;
-        tema.textContent = p.tema;
+        tema.textContent = bt.dataset.tema || '';
+        foto.hidden = p.foto === '';
         foto.src = p.foto;
         foto.alt = 'Retrato de ' + p.nome;
 
@@ -35,7 +36,7 @@
     }
 
     document.querySelectorAll('.js-abrir-cv').forEach((bt) => {
-        bt.addEventListener('click', () => abrir(bt.dataset.quem));
+        bt.addEventListener('click', () => abrir(bt));
     });
 
     popup.querySelector('.js-fechar-cv').addEventListener('click', fechar);

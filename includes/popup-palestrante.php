@@ -1,16 +1,14 @@
 <?php
-// Só entram no JSON os palestrantes com currículo cadastrado; a chave é o índice
-// do card em $palestrantes.
-$cv_palestrantes = [];
-foreach ($palestrantes as $i => $p) {
-    if (isset($curriculos[$p['nome']])) {
-        $cv_palestrantes[$i] = [
-            'nome' => $p['nome'],
-            'tema' => $p['tema'],
-            'foto' => $lp . '/assets/img/' . $p['foto'],
-            'cv'   => $curriculos[$p['nome']],
-        ];
-    }
+// O modal atende as duas grades (palestrantes e professores dos workshops), então a
+// chave é o nome. O tema vem do botão, porque o mesmo professor pode aparecer nas duas.
+$cv_modal = [];
+foreach ($curriculos as $nome => $cv) {
+    $foto = $fotos_palestrantes[$nome] ?? '';
+    $cv_modal[$nome] = [
+        'nome' => $nome,
+        'foto' => $foto ? $lp . '/assets/img/' . $foto : '',
+        'cv'   => $cv,
+    ];
 }
 ?>
 <div class="popup popup-cv" id="popup-palestrante" role="dialog" aria-modal="true" aria-labelledby="cv-nome">
@@ -31,5 +29,5 @@ foreach ($palestrantes as $i => $p) {
 </div>
 
 <script>
-window.CURRICULOS = <?= json_encode($cv_palestrantes, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?>;
+window.CURRICULOS = <?= json_encode($cv_modal, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?>;
 </script>
