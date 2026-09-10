@@ -21,7 +21,7 @@ const CATEGORIA_COM_CUPOM = 'pos';
 // Cupons aceitos na condição de aluno e ex-aluno, os mesmos códigos cadastrados no
 // carrinho da faculdade. Enquanto a lista estiver vazia o popup aceita o código
 // digitado e deixa a conferência para o checkout, que é onde o desconto é aplicado.
-$cupons = [];
+$cupons = ['cupomteste20'];
 
 $categorias = [
     'pos'   => 'Alunos e Ex Alunos da Pós Graduação Ufape',
