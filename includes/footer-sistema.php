@@ -44,7 +44,7 @@
     </div>
 </div>
 
-<script src="<?= $lp; ?>/assets/js/inscricao.js"></script>
+<script src="<?= $lp; ?>/assets/js/inscricao.js?v=<?= filemtime(__DIR__ . '/../assets/js/inscricao.js'); ?>"></script>
 </body>
 
 </html>

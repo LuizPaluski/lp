@@ -61,7 +61,7 @@ $menu_site = [
         var fullpath = '<?= $site ?>/';
     </script>
     <script src="<?= $estilo ?>/js/main.js"></script>
-    <script src="<?= $lp ?>/assets/js/mini-carrinho.js" defer></script>
+    <script src="<?= $lp ?>/assets/js/mini-carrinho.js?v=<?= filemtime(__DIR__ . '/../assets/js/mini-carrinho.js') ?>" defer></script>
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
