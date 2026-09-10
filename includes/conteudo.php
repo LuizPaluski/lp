@@ -79,6 +79,13 @@ $curriculos = [
         'Médica Veterinária na UTI e na internação da UFAPE de São Paulo',
         'Curso de Urgência e Emergência na UFAPE de São Paulo',
     ],
+    'Dra. Ticiane Giselle Bitencourt' => [
+        'Graduada em Medicina Veterinária pela Universidade Estadual de Santa Cruz (UESC)',
+        'Residência em Nutrição Clínica de Cães e Gatos na Faculdade de Ciências Agrárias e Veterinárias da UNESP, campus de Jaboticabal',
+        'Pós-graduação lato sensu em Terapia Intensiva Veterinária na UFAPE Intercursos',
+        'Mestranda em Ciências Veterinárias na UNESP FCAV, com enfoque em Nutrição Clínica de Cães e Gatos',
+        'Intercâmbio na Universidade de Gent, na Bélgica, no setor de Nutrição Clínica, e na Virginia Tech, nos Estados Unidos, como pesquisadora visitante',
+    ],
 ];
 
 
