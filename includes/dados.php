@@ -36,13 +36,15 @@ $categorias = [
 ];
 
 // checkout_id é o id do curso no carrinho da faculdade (cart/add/<ids separados por
-// hífen>). O carrinho tem produto separado para a condição de aluno e ex-aluno, então
-// o id vai por condição; sem id próprio, a condição cai no produto geral.
+// hífen>). Toda inscrição vai pelo valor cheio: o desconto de aluno e ex-aluno sai do
+// cupom aplicado no carrinho, não de um produto mais barato. O carrinho também tem
+// produto próprio de ex-aluno (68630 presencial, 68631 com gravação, 68633 online); se
+// um dia a inscrição voltar a passar por eles, é acrescentar 'pos' => '<id>' aqui.
 $modalidades = [
     'presencial' => [
         'titulo'      => 'Presencial',
         'nota'        => 'Inclui doação de brinquedo.',
-        'checkout_id' => ['geral' => '68619', 'pos' => '68630'],
+        'checkout_id' => ['geral' => '68619'],
         'precos'      => [
             'geral'  => ['1' => 26000, '2' => 31200],
         ],
@@ -50,7 +52,7 @@ $modalidades = [
     'presencial_gravacao' => [
         'titulo'      => 'Presencial + gravação (12 meses)',
         'nota'        => 'Inclui doação de brinquedo. Em caso de não comparecimento, será cobrada taxa de R$ 25 referente ao brinquedo.',
-        'checkout_id' => ['geral' => '68620', 'pos' => '68631'],
+        'checkout_id' => ['geral' => '68620'],
         'precos'      => [
             'geral'  => ['1' => 47000, '2' => 56400],
         ],
@@ -58,7 +60,7 @@ $modalidades = [
     'online' => [
         'titulo'      => 'Online transmitido e gravado',
         'nota'        => 'Acesso por 12 meses.',
-        'checkout_id' => ['geral' => '68621', 'pos' => '68633'],
+        'checkout_id' => ['geral' => '68621'],
         'precos'      => [
             'geral'  => ['1' => 38000, '2' => 45600],
         ],
