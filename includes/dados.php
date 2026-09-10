@@ -44,7 +44,7 @@ $modalidades = [
     'presencial_gravacao' => [
         'titulo'      => 'Presencial + gravação (12 meses)',
         'nota'        => 'Inclui doação de brinquedo. Em caso de não comparecimento, será cobrada taxa de R$ 25 referente ao brinquedo.',
-        'checkout_id' => ['geral' => '68620'],
+        'checkout_id' => ['geral' => '68620', 'pos' => '68631'],
         'precos'      => [
             'pos'    => ['1' => 22000, '2' => 26400],
             'geral'  => ['1' => 47000, '2' => 56400],
