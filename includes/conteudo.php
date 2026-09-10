@@ -125,7 +125,7 @@ $faq = [
     ['O evento será presencial ou online?', 'O simpósio terá formato híbrido, com opção presencial e opção online transmitida e gravada.'],
     ['O acesso online fica disponível por quanto tempo?', 'Na modalidade online transmitida e gravada, o acesso ficará disponível por 12 meses.'],
     ['O presencial tem limite de vagas?', 'Sim. O número máximo presencial é de 260 pessoas.'],
-    ['Há valor diferente para ex-alunos UFAPE?', 'Sim. Há condições específicas para ex-alunos da pós-graduação UFAPE, ex-alunos de cursos abertos UFAPE e demais participantes.'],
+    ['Há valor diferente para ex-alunos UFAPE?', 'Sim. Alunos e ex-alunos da pós-graduação UFAPE têm valores próprios; os demais participantes seguem a tabela geral.'],
     ['A inscrição presencial exige doação?', 'Sim. Nas categorias presenciais informadas, há doação de brinquedo vinculada à inscrição.'],
     ['Quais são as formas de pagamento?', 'Pix, boleto à vista e cartão: 3x sem juros e de 4 a 10x com juros. As regras de cancelamento, transferência e reembolso seguem a política institucional da UFAPE.'],
 ];

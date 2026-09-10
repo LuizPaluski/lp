@@ -20,9 +20,8 @@ const WEBHOOK_INSCRICAO = 'https://webhook.thegrowthhub.app.br/webhook/4ded9a37-
 const CATEGORIA_PADRAO = 'geral';
 
 $categorias = [
-    'pos'    => 'Ex-aluno UFAPE pós-graduação',
-    'cursos' => 'Ex-aluno UFAPE cursos abertos',
-    'geral'  => 'Demais participantes',
+    'pos'   => 'Alunos e Ex Alunos da Pós Graduação Ufape',
+    'geral' => 'Demais participantes',
 ];
 
 // checkout_id é o id do curso no carrinho da faculdade (cart/add/<ids separados por hífen>).
@@ -33,7 +32,6 @@ $modalidades = [
         'checkout_id' => '68619',
         'precos'      => [
             'pos'    => ['1' => 15000, '2' => 18000],
-            'cursos' => ['1' => 21000, '2' => 25200],
             'geral'  => ['1' => 26000, '2' => 31200],
         ],
     ],
@@ -43,7 +41,6 @@ $modalidades = [
         'checkout_id' => '68620',
         'precos'      => [
             'pos'    => ['1' => 22000, '2' => 26400],
-            'cursos' => ['1' => 33000, '2' => 39600],
             'geral'  => ['1' => 47000, '2' => 56400],
         ],
     ],
@@ -53,7 +50,6 @@ $modalidades = [
         'checkout_id' => '68621',
         'precos'      => [
             'pos'    => ['1' => 22000, '2' => 26400],
-            'cursos' => ['1' => 30000, '2' => 36000],
             'geral'  => ['1' => 38000, '2' => 45600],
         ],
     ],
