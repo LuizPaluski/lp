@@ -15,8 +15,15 @@ const PASTA_NO_SITE = 'simposio-plantonista';
 const CHECKOUT_BASE = 'https://faculdade.ufape.com.br/cart/add';
 const WEBHOOK_INSCRICAO = 'https://webhook.thegrowthhub.app.br/webhook/4ded9a37-413e-4c04-a6f0-ac3d554bb0a7';
 
+// A condição de aluno e ex-aluno é o valor de demais participantes com desconto.
+const DESCONTO_EX_ALUNO = 0.20;
+
 // Condição que exige cupom para comprovar o vínculo com a UFAPE.
 const CATEGORIA_COM_CUPOM = 'pos';
+
+// Cupom em espera: ligar de novo é trocar para true, o campo volta ao popup e o
+// cupom.php passa a ser consultado.
+const PEDE_CUPOM = false;
 
 // Cupons aceitos na condição de aluno e ex-aluno, os mesmos códigos cadastrados no
 // carrinho da faculdade. Enquanto a lista estiver vazia o popup aceita o código
@@ -37,7 +44,6 @@ $modalidades = [
         'nota'        => 'Inclui doação de brinquedo.',
         'checkout_id' => ['geral' => '68619', 'pos' => '68630'],
         'precos'      => [
-            'pos'    => ['1' => 15000, '2' => 18000],
             'geral'  => ['1' => 26000, '2' => 31200],
         ],
     ],
@@ -46,16 +52,14 @@ $modalidades = [
         'nota'        => 'Inclui doação de brinquedo. Em caso de não comparecimento, será cobrada taxa de R$ 25 referente ao brinquedo.',
         'checkout_id' => ['geral' => '68620', 'pos' => '68631'],
         'precos'      => [
-            'pos'    => ['1' => 22000, '2' => 26400],
             'geral'  => ['1' => 47000, '2' => 56400],
         ],
     ],
     'online' => [
         'titulo'      => 'Online transmitido e gravado',
         'nota'        => 'Acesso por 12 meses.',
-        'checkout_id' => ['geral' => '68621'],
+        'checkout_id' => ['geral' => '68621', 'pos' => '68633'],
         'precos'      => [
-            'pos'    => ['1' => 22000, '2' => 26400],
             'geral'  => ['1' => 38000, '2' => 45600],
         ],
     ],
@@ -73,11 +77,27 @@ function formatar_brl(int $centavos): string
     return 'R$ ' . number_format($centavos / 100, 2, ',', '.');
 }
 
+function valor_categoria(string $modalidade, string $categoria, string $lote): int
+{
+    global $modalidades;
+
+    $cheio = $modalidades[$modalidade]['precos']['geral'][$lote];
+
+    return $categoria === CATEGORIA_COM_CUPOM
+        ? (int) round($cheio * (1 - DESCONTO_EX_ALUNO))
+        : $cheio;
+}
+
+function desconto_em_texto(): string
+{
+    return (int) round(DESCONTO_EX_ALUNO * 100) . '% de desconto';
+}
+
 function total_centavos(string $modalidade, string $categoria, array $workshops, string $lote): int
 {
-    global $modalidades, $workshops_opcionais;
+    global $workshops_opcionais;
 
-    $total = $modalidades[$modalidade]['precos'][$categoria][$lote];
+    $total = valor_categoria($modalidade, $categoria, $lote);
     foreach ($workshops as $id) {
         if (isset($workshops_opcionais[$id])) {
             $total += $workshops_opcionais[$id]['valor'];

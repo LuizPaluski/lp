@@ -587,6 +587,17 @@ html {
     color: var(--azul);
 }
 
+.card-preco .preco .selo-desconto {
+    padding: 5px 14px;
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: #fff;
+    background-color: var(--azul-medio);
+    border-radius: 20px;
+}
+
 .card-preco .preco s {
     font-size: 13px;
     color: #999;

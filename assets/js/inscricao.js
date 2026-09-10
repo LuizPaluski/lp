@@ -21,7 +21,7 @@
     }
 
     function pedeCupom() {
-        return categoria() === dados.comCupom;
+        return cupom !== null && categoria() === dados.comCupom;
     }
 
     function workshopsMarcados() {
@@ -49,8 +49,10 @@
     }
 
     function atualizarCondicao() {
-        campoCupom.hidden = !pedeCupom();
-        avisoCupom.textContent = '';
+        if (campoCupom) {
+            campoCupom.hidden = !pedeCupom();
+            avisoCupom.textContent = '';
+        }
         popup.querySelector('.js-total').textContent = brl(totalCentavos());
     }
 
@@ -98,8 +100,11 @@
         popup.querySelector('.js-resumo-categoria').textContent = dados.categorias[categoria()];
         popup.querySelector('.js-resumo-workshops').textContent = titulosWorkshops().join(', ') || 'nenhum';
         popup.querySelector('.js-resumo-total').textContent = brl(totalCentavos());
-        popup.querySelector('.js-resumo-linha-cupom').hidden = !pedeCupom();
-        popup.querySelector('.js-resumo-cupom').textContent = cupom.value.trim();
+        const linhaCupom = popup.querySelector('.js-resumo-linha-cupom');
+        if (linhaCupom) {
+            linhaCupom.hidden = !pedeCupom();
+            popup.querySelector('.js-resumo-cupom').textContent = cupom.value.trim();
+        }
         mostrarEtapa(2);
         nome.focus();
     }
@@ -126,9 +131,11 @@
         campo.addEventListener('change', atualizarCondicao);
     });
 
-    cupom.addEventListener('input', () => {
-        avisoCupom.textContent = '';
-    });
+    if (cupom) {
+        cupom.addEventListener('input', () => {
+            avisoCupom.textContent = '';
+        });
+    }
 
     btContinuar.addEventListener('click', () => {
         if (!pedeCupom()) {

@@ -20,11 +20,13 @@
                         </label>
                     <?php endforeach; ?>
 
-                    <div class="campo-cupom js-campo-cupom" hidden>
-                        <label class="rotulo-campo" for="cupom">Cupom da condição de aluno e ex-aluno</label>
-                        <input class="entrada" type="text" id="cupom" maxlength="40" placeholder="Digite o cupom" autocomplete="off">
-                        <p class="aviso js-aviso-cupom"></p>
-                    </div>
+                    <?php if (PEDE_CUPOM): ?>
+                        <div class="campo-cupom js-campo-cupom" hidden>
+                            <label class="rotulo-campo" for="cupom">Cupom da condição de aluno e ex-aluno</label>
+                            <input class="entrada" type="text" id="cupom" maxlength="40" placeholder="Digite o cupom" autocomplete="off">
+                            <p class="aviso js-aviso-cupom"></p>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <div class="campo">
@@ -50,7 +52,9 @@
             <div class="etapa" data-etapa="2" hidden>
                 <div class="resumo">
                     <div><strong>Condição:</strong> <span class="js-resumo-categoria"></span></div>
-                    <div class="js-resumo-linha-cupom" hidden><strong>Cupom:</strong> <span class="js-resumo-cupom"></span></div>
+                    <?php if (PEDE_CUPOM): ?>
+                        <div class="js-resumo-linha-cupom" hidden><strong>Cupom:</strong> <span class="js-resumo-cupom"></span></div>
+                    <?php endif; ?>
                     <div><strong>Workshops:</strong> <span class="js-resumo-workshops"></span></div>
                     <div><strong>Total (<?= $lote ?>º lote):</strong> <span class="js-resumo-total"></span></div>
                 </div>
@@ -74,20 +78,31 @@
     </div>
 </div>
 
+<?php
+// o preço de cada condição já sai calculado, com o desconto de ex-aluno aplicado
+$modalidades_popup = [];
+foreach ($modalidades as $id => $m) {
+    $precos = [];
+    foreach (array_keys($categorias) as $cat) {
+        $precos[$cat] = valor_categoria($id, $cat, $lote);
+    }
+    $modalidades_popup[$id] = [
+        'titulo'      => $m['titulo'],
+        'checkoutIds' => $m['checkout_id'],
+        'precos'      => $precos,
+    ];
+}
+?>
 <script>
 window.SIMPOSIO = <?= json_encode([
     'lote'          => $lote,
     'endpoint'      => $lp . '/inscricao.php',
     'endpointCupom' => $lp . '/cupom.php',
-    'comCupom'      => CATEGORIA_COM_CUPOM,
+    'comCupom'      => PEDE_CUPOM ? CATEGORIA_COM_CUPOM : '',
     'categorias'    => $categorias,
     'checkoutBase'  => CHECKOUT_BASE,
     'utm'           => utm_checkout($lote),
-    'modalidades'   => array_map(fn($m) => [
-        'titulo'     => $m['titulo'],
-        'checkoutIds' => $m['checkout_id'],
-        'precos'     => array_map(fn($p) => $p[$lote], $m['precos']),
-    ], $modalidades),
+    'modalidades'   => $modalidades_popup,
     'workshops'     => array_map(fn($w) => [
         'titulo'     => $w['titulo'],
         'checkoutId' => $w['checkout_id'],

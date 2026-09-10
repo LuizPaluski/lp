@@ -165,12 +165,18 @@ require __DIR__ . ($no_sistema ? '/includes/header-sistema.php' : '/includes/hea
                         <?php foreach ($categorias as $cat_id => $cat_label): ?>
                             <div>
                                 <p class="publico"><?= $cat_label ?></p>
-                                <p class="preco">
-                                    <b><?= formatar_brl($modalidade['precos'][$cat_id][$lote]) ?></b>
-                                    <?php if ($lote === '1'): ?>
-                                        <s>2º lote <?= formatar_brl($modalidade['precos'][$cat_id][$outro_lote]) ?></s>
-                                    <?php endif; ?>
-                                </p>
+                                <?php if ($cat_id === CATEGORIA_COM_CUPOM): ?>
+                                    <p class="preco">
+                                        <span class="selo-desconto"><?= desconto_em_texto() ?></span>
+                                    </p>
+                                <?php else: ?>
+                                    <p class="preco">
+                                        <b><?= formatar_brl(valor_categoria($id, $cat_id, $lote)) ?></b>
+                                        <?php if ($lote === '1'): ?>
+                                            <s>2º lote <?= formatar_brl(valor_categoria($id, $cat_id, $outro_lote)) ?></s>
+                                        <?php endif; ?>
+                                    </p>
+                                <?php endif; ?>
                             </div>
                         <?php endforeach; ?>
                     </div>
