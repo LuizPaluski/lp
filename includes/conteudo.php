@@ -36,6 +36,34 @@ $palestrantes = [
 
 $fotos_palestrantes = array_column($palestrantes, 'foto', 'nome');
 
+// Currículo por palestrante, exibido no modal do card. Quem ainda não mandou o
+// texto fica de fora e o card não abre.
+$curriculos = [
+    'Dr. Matheus Matioli Mantovani' => [
+        'Graduado em Medicina Veterinária na Universidade Federal de Uberlândia (2009)',
+        'Residência em Clínica dos Animais Domésticos (R1 e R2) no Hospital Veterinário da Universidade Federal de Uberlândia, com ênfase em pequenos animais',
+        'Mestrado em Ciências Veterinárias na Universidade Federal de Lavras (2012)',
+        'Doutorado na Faculdade de Medicina Veterinária e Zootecnia da Universidade de São Paulo (2016)',
+        'Professor de Clínica de Pequenos Animais da Faculdade de Medicina Veterinária da Universidade Federal de Uberlândia (UFU)',
+    ],
+    'Dr. Alessandro Martins' => [
+        'Residência em Anestesiologia Veterinária na UNESP de Jaboticabal',
+        'Especialização em Anestesiologia pela FMVZ-USP',
+        'Doutorado em Anestesiologia pela FM-USP',
+        'Presidente da APAV',
+        'CEO da Faculdade UFAPE',
+    ],
+    'M.V. Djalmo Pietruka' => [
+        'Especializado em Emergência e Terapia Intensiva pela UFAPE Intercursos',
+        'Especializado em Cardiologia pela UFAPE Intercursos',
+        'Internato em Terapia Intensiva na UFAPE Excelência Veterinária',
+        'Preceptor na Unidade de Terapia Intensiva da UFAPE',
+        'CardioIntensivista do Hospital Veterinário UFAPE',
+        'Professor das pós-graduações da UFAPE Intercursos',
+    ],
+];
+
+
 // uma linha da agenda pode citar mais de um palestrante
 function retratos_da_linha(string $quem): array
 {

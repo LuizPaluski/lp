@@ -202,11 +202,14 @@ require __DIR__ . ($no_sistema ? '/includes/header-sistema.php' : '/includes/hea
         <span class="chapeu">Corpo docente</span>
         <h2 class="titulo-secao">Palestrantes <span>confirmados</span></h2>
         <div class="grade-palestrantes">
-            <?php foreach ($palestrantes as $p): ?>
+            <?php foreach ($palestrantes as $i => $p): ?>
                 <article class="lp-card card-palestrante">
                     <img src="<?= $lp ?>/assets/img/<?= $p['foto'] ?>" alt="Retrato de <?= $p['nome'] ?>" loading="lazy">
                     <h3><?= $p['nome'] ?></h3>
                     <p><?= $p['tema'] ?></p>
+                    <?php if (isset($curriculos[$p['nome']])): ?>
+                        <button type="button" class="ver-cv js-abrir-cv" data-quem="<?= $i ?>">Ver currículo</button>
+                    <?php endif; ?>
                 </article>
             <?php endforeach; ?>
         </div>
@@ -237,4 +240,5 @@ require __DIR__ . ($no_sistema ? '/includes/header-sistema.php' : '/includes/hea
 
 <?php
 require __DIR__ . '/includes/popup-inscricao.php';
+require __DIR__ . '/includes/popup-palestrante.php';
 require __DIR__ . ($no_sistema ? '/includes/footer-sistema.php' : '/includes/footer.php');

@@ -647,11 +647,52 @@ html {
 }
 
 .card-palestrante {
+    position: relative;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     padding: 25px 20px;
 }
 
+.card-palestrante:has(.ver-cv) {
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.card-palestrante:has(.ver-cv):hover {
+    border-color: var(--azul-medio);
+    box-shadow: 0 6px 18px rgba(5, 99, 130, .12);
+}
+
+.ver-cv {
+    margin-top: auto;
+    padding-top: 18px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: var(--azul);
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* o pseudoelemento estende o clique do botão para o card inteiro */
+.ver-cv::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+}
+
+.ver-cv:hover {
+    color: var(--azul-escuro);
+    text-decoration: underline;
+}
+
 .card-palestrante img {
+    align-self: center;
     width: 140px;
     height: 140px;
     border-radius: 50%;
@@ -914,6 +955,42 @@ html {
     margin-bottom: 6px;
     font-size: 14px;
     font-weight: 600;
+}
+
+.popup-cv .retrato-cv {
+    display: block;
+    margin: 0 auto 22px auto;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    border: 4px solid var(--azul-claro);
+}
+
+.popup-cv .lista-cv {
+    display: grid;
+    gap: 14px;
+    list-style: none;
+}
+
+.popup-cv .lista-cv li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--cinza);
+}
+
+.popup-cv .lista-cv li::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--azul-medio);
 }
 
 .popup .resumo {
