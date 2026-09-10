@@ -11,23 +11,13 @@
 
         <div class="corpo">
             <div class="etapa" data-etapa="1">
-                <div class="campo">
-                    <span class="rotulo">Você é</span>
-                    <?php foreach ($categorias as $id => $label): ?>
-                        <label class="opcao">
-                            <input type="radio" name="categoria" value="<?= $id ?>" <?= $id === 'geral' ? 'checked' : '' ?>>
-                            <span class="titulo"><?= $label ?></span>
-                        </label>
-                    <?php endforeach; ?>
-
-                    <?php if (PEDE_CUPOM): ?>
-                        <div class="campo-cupom js-campo-cupom" hidden>
-                            <label class="rotulo-campo" for="cupom">Cupom da condição de aluno e ex-aluno</label>
-                            <input class="entrada" type="text" id="cupom" maxlength="40" placeholder="Digite o cupom" autocomplete="off">
-                            <p class="aviso js-aviso-cupom"></p>
-                        </div>
-                    <?php endif; ?>
-                </div>
+                <?php if (PEDE_CUPOM): ?>
+                    <div class="campo">
+                        <label class="rotulo-campo" for="cupom">Cupom de aluno ou ex-aluno da pós (opcional)</label>
+                        <input class="entrada" type="text" id="cupom" maxlength="40" placeholder="Digite o cupom" autocomplete="off">
+                        <p class="aviso js-aviso-cupom"></p>
+                    </div>
+                <?php endif; ?>
 
                 <div class="campo">
                     <span class="rotulo">Workshops opcionais (09/10)</span>
@@ -51,7 +41,6 @@
 
             <div class="etapa" data-etapa="2" hidden>
                 <div class="resumo">
-                    <div><strong>Condição:</strong> <span class="js-resumo-categoria"></span></div>
                     <?php if (PEDE_CUPOM): ?>
                         <div class="js-resumo-linha-cupom" hidden><strong>Cupom:</strong> <span class="js-resumo-cupom"></span></div>
                     <?php endif; ?>
@@ -95,7 +84,6 @@ window.SIMPOSIO = <?= json_encode([
     'endpoint'      => $lp . '/inscricao.php',
     'endpointCupom' => $lp . '/cupom.php',
     'comCupom'      => PEDE_CUPOM ? CATEGORIA_COM_CUPOM : '',
-    'categorias'    => $categorias,
     'checkoutBase'  => CHECKOUT_BASE,
     'utm'           => utm_checkout($lote),
     'modalidades'   => $modalidades_popup,
