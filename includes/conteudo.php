@@ -108,11 +108,14 @@ function retratos_da_linha(string $quem): array
 
 // Professores dos workshops do pré-simpósio. Foto vazia enquanto não chega o retrato.
 $professores_workshop = [
-    ['nome' => 'Guilherme Zupiroli',         'tema' => 'Balonamento arterial pulmonar',       'foto' => ''],
+    ['nome' => 'Guilherme Zupiroli',         'tema' => 'Balonamento arterial pulmonar',       'foto' => 'guilherme.jpg'],
     ['nome' => 'Dr. Alessandro Martins',     'tema' => 'Hemodinâmica básica e avançada',      'foto' => 'alessandro.jpg'],
-    ['nome' => 'Dr. Carlos Eduardo Bernini', 'tema' => 'Atriosseptostomia',                   'foto' => ''],
+    ['nome' => 'Dr. Carlos Eduardo Bernini', 'tema' => 'Atriosseptostomia',                   'foto' => 'carlos.jpg'],
     ['nome' => 'M.V. Renan Matheus Duarte',  'tema' => 'Ventilação mecânica no ICC esquerdo', 'foto' => 'renan.jpg'],
 ];
+
+// o modal também procura o retrato dos professores dos workshops
+$fotos_palestrantes += array_filter(array_column($professores_workshop, 'foto', 'nome'));
 
 // iniciais no lugar do retrato de quem ainda não mandou foto
 function iniciais(string $nome): string
