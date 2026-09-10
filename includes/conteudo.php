@@ -22,7 +22,6 @@ $diferenciais = [
 ];
 
 $palestrantes = [
-    ['nome' => 'Dr. Matheus Matioli Mantovani',        'tema' => 'Cardiopatias em cães e gatos e guia terapêutico',                    'foto' => 'matheus.jpg'],
     ['nome' => 'Dr. Alessandro Martins',               'tema' => 'Instrumentação hemodinâmica e parada cardiogênica',                  'foto' => 'alessandro.jpg'],
     ['nome' => 'M.V. Djalmo Pietruka',                 'tema' => 'POCUS direcionado ao cardiopata e VExUS',                            'foto' => 'djalmo.jpg'],
     ['nome' => 'M.V. Renan Matheus Duarte',            'tema' => 'Ventilação mecânica e vasoativos no choque',                         'foto' => 'renan.jpg'],
@@ -39,13 +38,6 @@ $fotos_palestrantes = array_column($palestrantes, 'foto', 'nome');
 // Currículo por palestrante, exibido no modal do card. Quem ainda não mandou o
 // texto fica de fora e o card não abre.
 $curriculos = [
-    'Dr. Matheus Matioli Mantovani' => [
-        'Graduado em Medicina Veterinária na Universidade Federal de Uberlândia (2009)',
-        'Residência em Clínica dos Animais Domésticos (R1 e R2) no Hospital Veterinário da Universidade Federal de Uberlândia, com ênfase em pequenos animais',
-        'Mestrado em Ciências Veterinárias na Universidade Federal de Lavras (2012)',
-        'Doutorado na Faculdade de Medicina Veterinária e Zootecnia da Universidade de São Paulo (2016)',
-        'Professor de Clínica de Pequenos Animais da Faculdade de Medicina Veterinária da Universidade Federal de Uberlândia (UFU)',
-    ],
     'Dr. Alessandro Martins' => [
         'Residência em Anestesiologia Veterinária na UNESP de Jaboticabal',
         'Especialização em Anestesiologia pela FMVZ-USP',
@@ -129,8 +121,8 @@ function iniciais(string $nome): string
 $programacao = [
     '10 de outubro de 2026' => [
         ['08h30 às 09h00', 'Abertura', ''],
-        ['09h00 às 10h00', 'Principais cardiopatias em cães e gatos e sua classificação', 'Dr. Matheus Matioli Mantovani'],
-        ['10h00 às 11h00', 'Guia terapêutico do B2 ao D', 'Dr. Matheus Matioli Mantovani'],
+        ['09h00 às 10h00', 'Principais cardiopatias em cães e gatos e sua classificação', 'A confirmar'],
+        ['10h00 às 11h00', 'Guia terapêutico do B2 ao D', 'A confirmar'],
         ['11h00 às 11h30', 'Intervalo', ''],
         ['11h30 às 12h30', 'POCUS direcionado ao cardiopata', 'M.V. Djalmo Pietruka'],
         ['12h30 às 13h00', 'Abordagem inicial do edema pulmonar cardiogênico no pronto atendimento', 'M.V. Jennif da Rocha Esposito Martins'],
