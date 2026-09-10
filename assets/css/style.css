@@ -623,6 +623,8 @@ html {
 .inclusos p {
     display: flex;
     align-items: center;
+    /* margem zerada porque a regra geral tira só a do último e desalinha o card */
+    margin: 0;
     padding: 18px 20px;
     font-size: 14px;
     background-color: #fff;
