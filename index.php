@@ -102,62 +102,7 @@ require __DIR__ . ($no_sistema ? '/includes/header-sistema.php' : '/includes/hea
     </div>
 </section>
 
-<section class="secao" id="workshops">
-    <div class="lp-container">
-        <span class="chapeu">09 de outubro de 2026, pré-simpósio</span>
-        <h2 class="titulo-secao">Workshops <span>hands on</span></h2>
-        <p class="intro">Turmas reduzidas, com prática in vivo. Inscrição independente do simpósio.</p>
-
-        <div class="fotos-clinica">
-            <figure>
-                <img src="<?= $lp ?>/assets/img/clinica-1.jpg" alt="Veterinário demonstrando ecocardiografia em paciente monitorado durante aula prática" loading="lazy">
-                <figcaption>Demonstração de POCUS e monitorização hemodinâmica com o paciente ao vivo.</figcaption>
-            </figure>
-            <figure>
-                <img src="<?= $lp ?>/assets/img/clinica-2.jpg" alt="Equipe veterinária acompanhando pacientes internados em UTI com ventilação mecânica" loading="lazy">
-                <figcaption>Rotina de UTI, ventilação mecânica e manejo do cardiopata crítico.</figcaption>
-            </figure>
-        </div>
-
-        <div class="grade-workshops">
-            <?php foreach ($workshops_opcionais as $id => $ws): ?>
-                <?php $detalhe = $workshops_detalhe[$id]; ?>
-                <article class="lp-card card-workshop">
-                    <h3><?= $ws['titulo'] ?></h3>
-                    <div class="meta">
-                        <span class="valor"><?= formatar_brl($ws['valor']) ?></span>
-                        <span class="vagas"><?= $detalhe['vagas'] ?></span>
-                    </div>
-                    <ul>
-                        <?php foreach ($detalhe['itens'] as [$hora, $atividade, $quem]): ?>
-                            <li>
-                                <span class="hora"><?= $hora ?></span>
-                                <span>
-                                    <?= $atividade ?>
-                                    <span class="quem"><?= $quem ?></span>
-                                </span>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </article>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-
-<section class="secao" id="professores">
-    <div class="lp-container">
-        <span class="chapeu">Quem ministra os workshops</span>
-        <h2 class="titulo-secao">Professores <span>confirmados</span></h2>
-        <div class="grade-palestrantes grade-professores">
-            <?php foreach ($professores_workshop as $p): ?>
-                <?php require __DIR__ . '/includes/card-palestrante.php'; ?>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
-
-<section class="secao cinza" id="investimento">
+<section class="secao" id="investimento">
     <div class="lp-container">
         <h2 class="titulo-secao">Escolha a sua <span>modalidade</span></h2>
         <p class="intro">
@@ -209,7 +154,7 @@ require __DIR__ . ($no_sistema ? '/includes/header-sistema.php' : '/includes/hea
     </div>
 </section>
 
-<section class="secao" id="palestrantes">
+<section class="secao cinza" id="palestrantes">
     <div class="lp-container">
         <span class="chapeu">Corpo docente</span>
         <h2 class="titulo-secao">Palestrantes <span>confirmados</span></h2>
@@ -221,7 +166,7 @@ require __DIR__ . ($no_sistema ? '/includes/header-sistema.php' : '/includes/hea
     </div>
 </section>
 
-<section class="secao cinza" id="faq">
+<section class="secao" id="faq">
     <div class="lp-container">
         <h2 class="titulo-secao">Dúvidas <span>frequentes</span></h2>
         <div class="faq">

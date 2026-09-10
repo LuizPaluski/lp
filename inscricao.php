@@ -24,13 +24,8 @@ if (!isset($modalidades[$modalidade], $categorias[$categoria])
     exit;
 }
 
-$workshops = array_values(array_intersect(
-    (array) ($entrada['workshops'] ?? []),
-    array_keys($workshops_opcionais)
-));
-
 $lote  = LOTE_VIGENTE;
-$total = total_centavos($modalidade, $workshops, $lote);
+$total = valor_cheio($modalidade, $lote);
 
 $payload = [
     'nome'             => $nome,
@@ -39,7 +34,6 @@ $payload = [
     'categoria_label'  => $categorias[$categoria],
     'modalidade'       => $modalidade,
     'modalidade_label' => $modalidades[$modalidade]['titulo'],
-    'workshops'        => array_map(fn($id) => $workshops_opcionais[$id]['titulo'], $workshops),
     'lote'             => $lote,
     'total_centavos'   => $total,
     'total_formatado'  => formatar_brl($total),
@@ -50,7 +44,7 @@ $payload = [
     'enviado_em'       => date('c'),
 ];
 
-$payload['checkout_url'] = url_checkout($modalidade, $categoria, $workshops, $lote);
+$payload['checkout_url'] = url_checkout($modalidade, $categoria, $lote);
 
 $ch = curl_init(WEBHOOK_INSCRICAO);
 curl_setopt_array($ch, [
