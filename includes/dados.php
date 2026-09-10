@@ -90,7 +90,7 @@ function valor_categoria(string $modalidade, string $categoria, string $lote): i
 
 function desconto_em_texto(): string
 {
-    return (int) round(DESCONTO_EX_ALUNO * 100) . '% de desconto';
+    return (int) round(DESCONTO_EX_ALUNO * 100) . '% de desconto usando o cupom';
 }
 
 function total_centavos(string $modalidade, string $categoria, array $workshops, string $lote): int
