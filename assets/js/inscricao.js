@@ -7,17 +7,29 @@
     const etapa2 = popup.querySelector('[data-etapa="2"]');
     const nome = popup.querySelector('#nome');
     const telefone = popup.querySelector('#telefone');
+    const cupom = popup.querySelector('#cupom');
+    const campoCupom = popup.querySelector('.js-campo-cupom');
+    const avisoCupom = popup.querySelector('.js-aviso-cupom');
+    const btContinuar = popup.querySelector('.js-continuar');
     const btEnviar = popup.querySelector('.js-enviar');
 
     let modalidade = null;
     let enviando = false;
+
+    function categoria() {
+        return popup.querySelector('input[name="categoria"]:checked').value;
+    }
+
+    function pedeCupom() {
+        return categoria() === dados.comCupom;
+    }
 
     function workshopsMarcados() {
         return Array.from(popup.querySelectorAll('input[name="workshop"]:checked')).map((c) => c.value);
     }
 
     function totalCentavos() {
-        const base = dados.modalidades[modalidade].preco;
+        const base = dados.modalidades[modalidade].precos[categoria()];
         return workshopsMarcados().reduce((soma, id) => soma + dados.workshops[id].valor, base);
     }
 
@@ -26,7 +38,8 @@
     }
 
     function urlCheckout() {
-        const ids = [dados.modalidades[modalidade].checkoutId];
+        const porCondicao = dados.modalidades[modalidade].checkoutIds;
+        const ids = [porCondicao[categoria()] || porCondicao.geral];
         workshopsMarcados().forEach((id) => ids.push(dados.workshops[id].checkoutId));
         return dados.checkoutBase + '/' + ids.join('-') + '?' + dados.utm;
     }
@@ -35,7 +48,9 @@
         return workshopsMarcados().map((id) => dados.workshops[id].titulo);
     }
 
-    function atualizarTotal() {
+    function atualizarCondicao() {
+        campoCupom.hidden = !pedeCupom();
+        avisoCupom.textContent = '';
         popup.querySelector('.js-total').textContent = brl(totalCentavos());
     }
 
@@ -60,7 +75,7 @@
         modalidade = id;
         popup.querySelector('.js-modalidade').textContent = dados.modalidades[id].titulo;
         mostrarEtapa(1);
-        atualizarTotal();
+        atualizarCondicao();
         popup.classList.add('aberto');
         document.body.style.overflow = 'hidden';
     }
@@ -68,6 +83,25 @@
     function fechar() {
         popup.classList.remove('aberto');
         document.body.style.overflow = '';
+    }
+
+    // a lista de cupons fica no servidor, então a conferência é feita lá
+    function conferirCupom() {
+        return fetch(dados.endpointCupom, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ codigo: cupom.value })
+        }).then((r) => r.json());
+    }
+
+    function irParaEtapa2() {
+        popup.querySelector('.js-resumo-categoria').textContent = dados.categorias[categoria()];
+        popup.querySelector('.js-resumo-workshops').textContent = titulosWorkshops().join(', ') || 'nenhum';
+        popup.querySelector('.js-resumo-total').textContent = brl(totalCentavos());
+        popup.querySelector('.js-resumo-linha-cupom').hidden = !pedeCupom();
+        popup.querySelector('.js-resumo-cupom').textContent = cupom.value.trim();
+        mostrarEtapa(2);
+        nome.focus();
     }
 
     document.querySelectorAll('.js-abrir-popup').forEach((bt) => {
@@ -84,15 +118,47 @@
         if (e.key === 'Escape' && popup.classList.contains('aberto')) fechar();
     });
 
-    popup.querySelectorAll('input[name="workshop"]').forEach((campo) => {
-        campo.addEventListener('change', atualizarTotal);
+    popup.querySelectorAll('input[name="categoria"]').forEach((campo) => {
+        campo.addEventListener('change', atualizarCondicao);
     });
 
-    popup.querySelector('.js-continuar').addEventListener('click', () => {
-        popup.querySelector('.js-resumo-workshops').textContent = titulosWorkshops().join(', ') || 'nenhum';
-        popup.querySelector('.js-resumo-total').textContent = brl(totalCentavos());
-        mostrarEtapa(2);
-        nome.focus();
+    popup.querySelectorAll('input[name="workshop"]').forEach((campo) => {
+        campo.addEventListener('change', atualizarCondicao);
+    });
+
+    cupom.addEventListener('input', () => {
+        avisoCupom.textContent = '';
+    });
+
+    btContinuar.addEventListener('click', () => {
+        if (!pedeCupom()) {
+            irParaEtapa2();
+            return;
+        }
+
+        if (cupom.value.trim() === '') {
+            avisoCupom.textContent = 'Informe o cupom da condição de aluno e ex-aluno.';
+            cupom.focus();
+            return;
+        }
+
+        btContinuar.disabled = true;
+        conferirCupom()
+            .then((resposta) => {
+                if (resposta.valido) {
+                    irParaEtapa2();
+                    return;
+                }
+                avisoCupom.textContent = 'Cupom não encontrado. Confira o código com a secretaria.';
+                cupom.focus();
+            })
+            .catch(() => {
+                // sem resposta do servidor o cupom segue para a conferência no checkout
+                irParaEtapa2();
+            })
+            .finally(() => {
+                btContinuar.disabled = false;
+            });
     });
 
     popup.querySelector('.js-voltar').addEventListener('click', () => mostrarEtapa(1));
@@ -115,6 +181,8 @@
         const lead = JSON.stringify({
             nome: nome.value.trim(),
             telefone: telefone.value.trim(),
+            categoria: categoria(),
+            cupom: pedeCupom() ? cupom.value.trim() : '',
             modalidade: modalidade,
             workshops: workshopsMarcados(),
             origem: window.location.href

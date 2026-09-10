@@ -12,11 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $entrada = json_decode(file_get_contents('php://input'), true);
 
 $modalidade = $entrada['modalidade'] ?? '';
-$categoria  = CATEGORIA_PADRAO;
+$categoria  = $entrada['categoria'] ?? '';
+$cupom      = trim($entrada['cupom'] ?? '');
 $nome       = trim($entrada['nome'] ?? '');
 $telefone   = trim($entrada['telefone'] ?? '');
 
-if (!isset($modalidades[$modalidade])
+if (!isset($modalidades[$modalidade], $categorias[$categoria])
     || mb_strlen($nome) < 3
     || strlen(preg_replace('/\D/', '', $telefone)) < 10) {
     http_response_code(422);
@@ -42,12 +43,14 @@ $payload = [
     'lote'             => $lote,
     'total_centavos'   => $total,
     'total_formatado'  => formatar_brl($total),
+    'cupom'            => $cupom,
+    'cupom_conferido'  => $cupom !== '' && cupom_valido($cupom),
     'destino'          => 'checkout',
     'origem'           => mb_substr($entrada['origem'] ?? '', 0, 500),
     'enviado_em'       => date('c'),
 ];
 
-$payload['checkout_url'] = url_checkout($modalidade, $workshops, $lote);
+$payload['checkout_url'] = url_checkout($modalidade, $categoria, $workshops, $lote);
 
 $ch = curl_init(WEBHOOK_INSCRICAO);
 curl_setopt_array($ch, [

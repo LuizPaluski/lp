@@ -12,6 +12,22 @@
         <div class="corpo">
             <div class="etapa" data-etapa="1">
                 <div class="campo">
+                    <span class="rotulo">Você é</span>
+                    <?php foreach ($categorias as $id => $label): ?>
+                        <label class="opcao">
+                            <input type="radio" name="categoria" value="<?= $id ?>" <?= $id === 'geral' ? 'checked' : '' ?>>
+                            <span class="titulo"><?= $label ?></span>
+                        </label>
+                    <?php endforeach; ?>
+
+                    <div class="campo-cupom js-campo-cupom" hidden>
+                        <label class="rotulo-campo" for="cupom">Cupom da condição de aluno e ex-aluno</label>
+                        <input class="entrada" type="text" id="cupom" maxlength="40" placeholder="Digite o cupom" autocomplete="off">
+                        <p class="aviso js-aviso-cupom"></p>
+                    </div>
+                </div>
+
+                <div class="campo">
                     <span class="rotulo">Workshops opcionais (09/10)</span>
                     <?php foreach ($workshops_opcionais as $id => $ws): ?>
                         <label class="opcao">
@@ -33,6 +49,8 @@
 
             <div class="etapa" data-etapa="2" hidden>
                 <div class="resumo">
+                    <div><strong>Condição:</strong> <span class="js-resumo-categoria"></span></div>
+                    <div class="js-resumo-linha-cupom" hidden><strong>Cupom:</strong> <span class="js-resumo-cupom"></span></div>
                     <div><strong>Workshops:</strong> <span class="js-resumo-workshops"></span></div>
                     <div><strong>Total (<?= $lote ?>º lote):</strong> <span class="js-resumo-total"></span></div>
                 </div>
@@ -60,12 +78,15 @@
 window.SIMPOSIO = <?= json_encode([
     'lote'          => $lote,
     'endpoint'      => $lp . '/inscricao.php',
+    'endpointCupom' => $lp . '/cupom.php',
+    'comCupom'      => CATEGORIA_COM_CUPOM,
+    'categorias'    => $categorias,
     'checkoutBase'  => CHECKOUT_BASE,
     'utm'           => utm_checkout($lote),
     'modalidades'   => array_map(fn($m) => [
         'titulo'     => $m['titulo'],
-        'checkoutId' => $m['checkout_id'],
-        'preco'      => $m['precos'][CATEGORIA_PADRAO][$lote],
+        'checkoutIds' => $m['checkout_id'],
+        'precos'     => array_map(fn($p) => $p[$lote], $m['precos']),
     ], $modalidades),
     'workshops'     => array_map(fn($w) => [
         'titulo'     => $w['titulo'],

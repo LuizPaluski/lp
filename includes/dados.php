@@ -15,21 +15,27 @@ const PASTA_NO_SITE = 'simposio-plantonista';
 const CHECKOUT_BASE = 'https://faculdade.ufape.com.br/cart/add';
 const WEBHOOK_INSCRICAO = 'https://webhook.thegrowthhub.app.br/webhook/4ded9a37-413e-4c04-a6f0-ac3d554bb0a7';
 
-// O popup não pergunta o vínculo com a UFAPE: toda inscrição vai ao carrinho pelo
-// valor de demais participantes. Ex-aluno acerta a condição com a secretaria.
-const CATEGORIA_PADRAO = 'geral';
+// Condição que exige cupom para comprovar o vínculo com a UFAPE.
+const CATEGORIA_COM_CUPOM = 'pos';
+
+// Cupons aceitos na condição de aluno e ex-aluno, os mesmos códigos cadastrados no
+// carrinho da faculdade. Enquanto a lista estiver vazia o popup aceita o código
+// digitado e deixa a conferência para o checkout, que é onde o desconto é aplicado.
+$cupons = [];
 
 $categorias = [
     'pos'   => 'Alunos e Ex Alunos da Pós Graduação Ufape',
     'geral' => 'Demais participantes',
 ];
 
-// checkout_id é o id do curso no carrinho da faculdade (cart/add/<ids separados por hífen>).
+// checkout_id é o id do curso no carrinho da faculdade (cart/add/<ids separados por
+// hífen>). O carrinho tem produto separado para a condição de aluno e ex-aluno, então
+// o id vai por condição; sem id próprio, a condição cai no produto geral.
 $modalidades = [
     'presencial' => [
         'titulo'      => 'Presencial',
         'nota'        => 'Inclui doação de brinquedo.',
-        'checkout_id' => '68619',
+        'checkout_id' => ['geral' => '68619', 'pos' => '68630'],
         'precos'      => [
             'pos'    => ['1' => 15000, '2' => 18000],
             'geral'  => ['1' => 26000, '2' => 31200],
@@ -38,7 +44,7 @@ $modalidades = [
     'presencial_gravacao' => [
         'titulo'      => 'Presencial + gravação (12 meses)',
         'nota'        => 'Inclui doação de brinquedo. Em caso de não comparecimento, será cobrada taxa de R$ 25 referente ao brinquedo.',
-        'checkout_id' => '68620',
+        'checkout_id' => ['geral' => '68620'],
         'precos'      => [
             'pos'    => ['1' => 22000, '2' => 26400],
             'geral'  => ['1' => 47000, '2' => 56400],
@@ -47,7 +53,7 @@ $modalidades = [
     'online' => [
         'titulo'      => 'Online transmitido e gravado',
         'nota'        => 'Acesso por 12 meses.',
-        'checkout_id' => '68621',
+        'checkout_id' => ['geral' => '68621'],
         'precos'      => [
             'pos'    => ['1' => 22000, '2' => 26400],
             'geral'  => ['1' => 38000, '2' => 45600],
@@ -91,11 +97,31 @@ function utm_checkout(string $lote): string
 }
 
 // Link do carrinho com a modalidade e os workshops escolhidos.
-function url_checkout(string $modalidade, array $workshops, string $lote): string
+function cupom_valido(string $codigo): bool
 {
-    global $modalidades, $workshops_opcionais;
+    global $cupons;
 
-    $ids = [$modalidades[$modalidade]['checkout_id']];
+    if ($cupons === []) {
+        return trim($codigo) !== '';
+    }
+
+    return in_array(strtoupper(trim($codigo)), array_map('strtoupper', $cupons), true);
+}
+
+function checkout_id(string $modalidade, string $categoria): string
+{
+    global $modalidades;
+
+    $ids = $modalidades[$modalidade]['checkout_id'];
+
+    return $ids[$categoria] ?? $ids['geral'];
+}
+
+function url_checkout(string $modalidade, string $categoria, array $workshops, string $lote): string
+{
+    global $workshops_opcionais;
+
+    $ids = [checkout_id($modalidade, $categoria)];
     foreach ($workshops as $id) {
         if (isset($workshops_opcionais[$id])) {
             $ids[] = $workshops_opcionais[$id]['checkout_id'];
