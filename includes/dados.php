@@ -79,15 +79,11 @@ function formatar_brl(int $centavos): string
     return 'R$ ' . number_format($centavos / 100, 2, ',', '.');
 }
 
-function valor_categoria(string $modalidade, string $categoria, string $lote): int
+function valor_cheio(string $modalidade, string $lote): int
 {
     global $modalidades;
 
-    $cheio = $modalidades[$modalidade]['precos']['geral'][$lote];
-
-    return $categoria === CATEGORIA_COM_CUPOM
-        ? (int) round($cheio * (1 - DESCONTO_EX_ALUNO))
-        : $cheio;
+    return $modalidades[$modalidade]['precos']['geral'][$lote];
 }
 
 function desconto_em_texto(): string
@@ -95,11 +91,11 @@ function desconto_em_texto(): string
     return (int) round(DESCONTO_EX_ALUNO * 100) . '% de desconto usando o cupom';
 }
 
-function total_centavos(string $modalidade, string $categoria, array $workshops, string $lote): int
+function total_centavos(string $modalidade, array $workshops, string $lote): int
 {
     global $workshops_opcionais;
 
-    $total = valor_categoria($modalidade, $categoria, $lote);
+    $total = valor_cheio($modalidade, $lote);
     foreach ($workshops as $id) {
         if (isset($workshops_opcionais[$id])) {
             $total += $workshops_opcionais[$id]['valor'];

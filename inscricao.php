@@ -30,7 +30,7 @@ $workshops = array_values(array_intersect(
 ));
 
 $lote  = LOTE_VIGENTE;
-$total = total_centavos($modalidade, $categoria, $workshops, $lote);
+$total = total_centavos($modalidade, $workshops, $lote);
 
 $payload = [
     'nome'             => $nome,

@@ -171,9 +171,9 @@ require __DIR__ . ($no_sistema ? '/includes/header-sistema.php' : '/includes/hea
                                     </p>
                                 <?php else: ?>
                                     <p class="preco">
-                                        <b><?= formatar_brl(valor_categoria($id, $cat_id, $lote)) ?></b>
+                                        <b><?= formatar_brl(valor_cheio($id, $lote)) ?></b>
                                         <?php if ($lote === '1'): ?>
-                                            <s>2º lote <?= formatar_brl(valor_categoria($id, $cat_id, $outro_lote)) ?></s>
+                                            <s>2º lote <?= formatar_brl(valor_cheio($id, $outro_lote)) ?></s>
                                         <?php endif; ?>
                                     </p>
                                 <?php endif; ?>

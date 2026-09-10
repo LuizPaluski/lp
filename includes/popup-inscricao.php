@@ -79,17 +79,13 @@
 </div>
 
 <?php
-// o preço de cada condição já sai calculado, com o desconto de ex-aluno aplicado
+// o total sempre mostra o valor cheio: o desconto de ex-aluno sai do cupom no carrinho
 $modalidades_popup = [];
 foreach ($modalidades as $id => $m) {
-    $precos = [];
-    foreach (array_keys($categorias) as $cat) {
-        $precos[$cat] = valor_categoria($id, $cat, $lote);
-    }
     $modalidades_popup[$id] = [
         'titulo'      => $m['titulo'],
         'checkoutIds' => $m['checkout_id'],
-        'precos'      => $precos,
+        'preco'       => valor_cheio($id, $lote),
     ];
 }
 ?>

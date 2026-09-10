@@ -29,7 +29,7 @@
     }
 
     function totalCentavos() {
-        const base = dados.modalidades[modalidade].precos[categoria()];
+        const base = dados.modalidades[modalidade].preco;
         return workshopsMarcados().reduce((soma, id) => soma + dados.workshops[id].valor, base);
     }
 
