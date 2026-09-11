@@ -79,6 +79,12 @@ $curriculos = [
         'Médica Veterinária na UTI e na internação da UFAPE de São Paulo',
         'Curso de Urgência e Emergência na UFAPE de São Paulo',
     ],
+    'M.V. Renan Matheus Duarte' => [
+        'Médico Veterinário',
+        'Pós-graduação em Terapia Intensiva e Emergência Veterinária na UFAPE',
+        'Residência em Terapia Intensiva e Emergência na UFAPE',
+        'Preceptor da UTI na UFAPE',
+    ],
     'Dra. Ticiane Giselle Bitencourt' => [
         'Graduada em Medicina Veterinária pela Universidade Estadual de Santa Cruz (UESC)',
         'Residência em Nutrição Clínica de Cães e Gatos na Faculdade de Ciências Agrárias e Veterinárias da UNESP, campus de Jaboticabal',
