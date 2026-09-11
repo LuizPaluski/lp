@@ -106,6 +106,16 @@ function retratos_da_linha(string $quem): array
     return array_values($retratos);
 }
 
+// Professores dos workshops do pré-simpósio. Foto vazia enquanto não chega o retrato.
+$professores_workshop = [
+    ['nome' => 'Guilherme Zupiroli',         'tema' => 'Balonamento arterial pulmonar',       'foto' => 'guilherme.jpg'],
+    ['nome' => 'Dr. Alessandro Martins',     'tema' => 'Hemodinâmica básica e avançada',      'foto' => 'alessandro.jpg'],
+    ['nome' => 'Dr. Carlos Eduardo Bernini', 'tema' => 'Atriosseptostomia',                   'foto' => 'carlos.jpg'],
+    ['nome' => 'M.V. Renan Matheus Duarte',  'tema' => 'Ventilação mecânica no ICC esquerdo', 'foto' => 'renan.jpg'],
+];
+
+// o modal também procura o retrato dos professores dos workshops
+$fotos_palestrantes += array_filter(array_column($professores_workshop, 'foto', 'nome'));
 
 // iniciais no lugar do retrato de quem ainda não mandou foto
 function iniciais(string $nome): string
@@ -147,6 +157,37 @@ $programacao = [
     ],
 ];
 
+// Chaves iguais às de $workshops_opcionais, em dados.php.
+$workshops_detalhe = [
+    'balonamento' => [
+        'vagas' => 'Máximo 10 alunos',
+        'itens' => [
+            ['09h00 às 10h00', 'Aula teórica', 'Guilherme Zupiroli'],
+            ['10h00 às 13h00', 'Aula demonstrativa e hands on in vivo de balonamento', 'Guilherme Zupiroli'],
+        ],
+    ],
+    'hemodinamica' => [
+        'vagas' => 'Máximo 10 alunos',
+        'itens' => [
+            ['08h00 às 10h00', 'Instrumentação hemodinâmica', 'Dr. Alessandro Martins'],
+            ['09h00 às 13h00', 'Hemodinâmica básica e avançada durante procedimento cardiológico ao vivo', 'Dr. Alessandro Martins'],
+        ],
+    ],
+    'atriosseptostomia' => [
+        'vagas' => 'Máximo 10 alunos',
+        'itens' => [
+            ['14h00 às 16h00', 'Aula teórica', 'Dr. Carlos Eduardo Bernini'],
+            ['16h00 às 18h00', 'Aula demonstrativa in vivo de atriosseptostomia', 'Dr. Carlos Eduardo Bernini'],
+        ],
+    ],
+    'ventilacao' => [
+        'vagas' => 'Máximo 10 alunos',
+        'itens' => [
+            ['14h00 às 15h00', 'Aula teórica', 'Dr. Renan Matheus Duarte'],
+            ['15h00 às 19h00', 'Instrumentação e ventilação mecânica para procedimento cardiológico in vivo', 'Dr. Renan Matheus Duarte'],
+        ],
+    ],
+];
 
 $inclusos = [
     'Certificado UFAPE conforme modalidade',

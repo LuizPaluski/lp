@@ -67,6 +67,13 @@ $modalidades = [
     ],
 ];
 
+$workshops_opcionais = [
+    'balonamento'      => ['titulo' => 'Balonamento arterial pulmonar (09/10)',       'valor' => 198000, 'checkout_id' => '68624'],
+    'hemodinamica'     => ['titulo' => 'Hemodinâmica básica e avançada (09/10)',      'valor' => 115000, 'checkout_id' => '68625'],
+    'atriosseptostomia'=> ['titulo' => 'Atriosseptostomia (09/10)',                   'valor' => 348000, 'checkout_id' => '68626'],
+    'ventilacao'       => ['titulo' => 'Ventilação mecânica no ICC esquerdo (09/10)', 'valor' => 135000, 'checkout_id' => '68627'],
+];
+
 function formatar_brl(int $centavos): string
 {
     return 'R$ ' . number_format($centavos / 100, 2, ',', '.');
@@ -84,6 +91,19 @@ function desconto_em_texto(): string
     return (int) round(DESCONTO_EX_ALUNO * 100) . '% de desconto usando o cupom';
 }
 
+function total_centavos(string $modalidade, array $workshops, string $lote): int
+{
+    global $workshops_opcionais;
+
+    $total = valor_cheio($modalidade, $lote);
+    foreach ($workshops as $id) {
+        if (isset($workshops_opcionais[$id])) {
+            $total += $workshops_opcionais[$id]['valor'];
+        }
+    }
+    return $total;
+}
+
 // UTMs que marcam a inscrição como vinda desta landing page.
 function utm_checkout(string $lote): string
 {
@@ -94,6 +114,7 @@ function utm_checkout(string $lote): string
     ]);
 }
 
+// Link do carrinho com a modalidade e os workshops escolhidos.
 function cupom_valido(string $codigo): bool
 {
     global $cupons;
@@ -114,8 +135,16 @@ function checkout_id(string $modalidade, string $categoria): string
     return $ids[$categoria] ?? $ids['geral'];
 }
 
-// Link do carrinho da modalidade escolhida.
-function url_checkout(string $modalidade, string $categoria, string $lote): string
+function url_checkout(string $modalidade, string $categoria, array $workshops, string $lote): string
 {
-    return CHECKOUT_BASE . '/' . checkout_id($modalidade, $categoria) . '?' . utm_checkout($lote);
+    global $workshops_opcionais;
+
+    $ids = [checkout_id($modalidade, $categoria)];
+    foreach ($workshops as $id) {
+        if (isset($workshops_opcionais[$id])) {
+            $ids[] = $workshops_opcionais[$id]['checkout_id'];
+        }
+    }
+
+    return CHECKOUT_BASE . '/' . implode('-', $ids) . '?' . utm_checkout($lote);
 }
