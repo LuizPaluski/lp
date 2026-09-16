@@ -28,7 +28,7 @@ $palestrantes = [
     ['nome' => 'Dra. Flavia Mazzo',                    'tema' => 'Arritmias na internação e seu tratamento',                           'foto' => 'flavia.jpg'],
     ['nome' => 'Dra. Mayara Travalini',                'tema' => 'Anestesia no paciente cardiopata',                                   'foto' => 'mayara.jpg'],
     ['nome' => 'MSc. Adalberto Monteiro',              'tema' => 'Anticoagulação: o que temos de evidência nos pacientes cardiopatas', 'foto' => 'adalberto.jpg'],
-    ['nome' => 'M.V. Jennif da Rocha Esposito Martins', 'tema' => 'Edema pulmonar cardiogênico no pronto atendimento',                  'foto' => 'jeniff.jpg'],
+    ['nome' => 'M.V. Jennif da Rocha Esposito',        'tema' => 'Edema pulmonar cardiogênico no pronto atendimento',                  'foto' => 'jeniff.jpg'],
     ['nome' => 'Dra. Ticiane Giselle Bitencourt',      'tema' => 'Nutrição no paciente cardiopata na internação / UTI',                'foto' => 'ticiane.jpg'],
     ['nome' => 'M.V. Ariane Oliveira',                 'tema' => 'Manejo do felino com cardiopatia hipertrófica',                      'foto' => 'ariane.jpg'],
 ];
@@ -72,7 +72,7 @@ $curriculos = [
         'Pós-graduação lato sensu (residência) na FMVZ-USP, de 2005 a 2007',
         'Pós-graduação stricto sensu (mestrado) na FMVZ-USP, de 2008 a 2010',
     ],
-    'M.V. Jennif da Rocha Esposito Martins' => [
+    'M.V. Jennif da Rocha Esposito' => [
         'Médica Veterinária formada pela Universidade Federal de Minas Gerais',
         'Internato em UTI e internação na UFAPE de São Paulo',
         'Pós-graduanda em Cardiologia Veterinária',
@@ -141,7 +141,7 @@ $programacao = [
         ['10h00 às 11h00', 'Guia terapêutico do B2 ao D', 'A confirmar'],
         ['11h00 às 11h30', 'Intervalo', ''],
         ['11h30 às 12h30', 'POCUS direcionado ao cardiopata', 'M.V. Djalmo Pietruka'],
-        ['12h30 às 13h00', 'Abordagem inicial do edema pulmonar cardiogênico no pronto atendimento', 'M.V. Jennif da Rocha Esposito Martins'],
+        ['12h30 às 13h00', 'Abordagem inicial do edema pulmonar cardiogênico no pronto atendimento', 'M.V. Jennif da Rocha Esposito'],
         ['13h00 às 14h30', 'Intervalo, demonstrativo POCUS', 'M.V. Renan Matheus Duarte e M.V. Djalmo Pietruka'],
         ['14h30 às 15h30', 'Da oxigenoterapia à ventilação mecânica', 'MSc. Adalberto Monteiro'],
         ['15h30 às 16h30', 'Desmame da ventilação mecânica pós edema cardiogênico', 'M.V. Renan Matheus Duarte'],
