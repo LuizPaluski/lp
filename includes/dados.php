@@ -38,8 +38,9 @@ $categorias = [
 // checkout_id é o id do curso no carrinho da faculdade (cart/add/<ids separados por
 // hífen>). Toda inscrição vai pelo valor cheio: o desconto de aluno e ex-aluno sai do
 // cupom aplicado no carrinho, não de um produto mais barato. O carrinho também tem
-// produto próprio de ex-aluno (68630 presencial, 68631 com gravação, 68633 online); se
-// um dia a inscrição voltar a passar por eles, é acrescentar 'pos' => '<id>' aqui.
+// produto próprio de ex-aluno (68630 presencial, 68631 com gravação); se um dia a
+// inscrição voltar a passar por eles, é acrescentar 'pos' => '<id>' aqui. O 68633,
+// que este comentário dava como ex-aluno online, hoje é o workshop do NeuroVet.
 $modalidades = [
     'presencial' => [
         'titulo'      => 'Presencial',
