@@ -30,7 +30,6 @@ $palestrantes = [
     ['nome' => 'MSc. Adalberto Monteiro',              'tema' => 'Anticoagulação: o que temos de evidência nos pacientes cardiopatas', 'foto' => 'adalberto.jpg'],
     ['nome' => 'M.V. Jennif da Rocha Esposito',        'tema' => 'Edema pulmonar cardiogênico no pronto atendimento',                  'foto' => 'jeniff.jpg'],
     ['nome' => 'Dra. Ticiane Giselle Bitencourt',      'tema' => 'Nutrição no paciente cardiopata na internação / UTI',                'foto' => 'ticiane.jpg'],
-    ['nome' => 'M.V. Ariane Oliveira',                 'tema' => 'Manejo do felino com cardiopatia hipertrófica',                      'foto' => 'ariane.jpg'],
 ];
 
 $fotos_palestrantes = array_column($palestrantes, 'foto', 'nome');
@@ -154,7 +153,7 @@ $programacao = [
     '11 de outubro de 2026' => [
         ['09h00 às 10h00', 'Principais cardiopatias congênitas e seu tratamento', 'A confirmar'],
         ['10h00 às 11h00', 'Intervencionismo cardiológico', 'A confirmar'],
-        ['11h00 às 12h00', 'Manejo do felino com cardiopatia hipertrófica', 'M.V. Ariane Oliveira'],
+        ['11h00 às 12h00', 'Manejo do felino com cardiopatia hipertrófica', 'A combinar'],
         ['12h00 às 13h00', 'Anticoagulação: o que temos de evidência nos pacientes cardiopatas', 'MSc. Adalberto Monteiro'],
         ['13h00 às 14h00', 'Intervalo demonstrativo, demonstração VXE', 'M.V. Djalmo Pietruka'],
         ['14h00 às 15h00', 'Uso de vasoativos no choque cardiogênico', 'M.V. Renan Matheus Duarte'],
