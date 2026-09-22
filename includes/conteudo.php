@@ -22,7 +22,7 @@ $diferenciais = [
 ];
 
 $palestrantes = [
-    ['nome' => 'Dr. Alessandro Martins',               'tema' => 'Instrumentação hemodinâmica e parada cardiogênica',                  'foto' => 'alessandro.jpg'],
+    ['nome' => 'MSc. Daniel Zannin',                   'tema' => 'Parada de origem cardiogênica',                                      'foto' => 'zannin.jpg'],
     ['nome' => 'M.V. Djalmo Pietruka',                 'tema' => 'POCUS direcionado ao cardiopata e VExUS',                            'foto' => 'djalmo.jpg'],
     ['nome' => 'M.V. Renan Matheus Duarte',            'tema' => 'Ventilação mecânica e vasoativos no choque',                         'foto' => 'renan.jpg'],
     ['nome' => 'Dra. Flavia Mazzo',                    'tema' => 'Arritmias na internação e seu tratamento',                           'foto' => 'flavia.jpg'],
@@ -37,6 +37,11 @@ $fotos_palestrantes = array_column($palestrantes, 'foto', 'nome');
 // Currículo por palestrante, exibido no modal do card. Quem ainda não mandou o
 // texto fica de fora e o card não abre.
 $curriculos = [
+    'MSc. Daniel Zannin' => [
+        'Mestre em Anestesiologia Veterinária pela UFPR',
+        'Residência em Anestesiologia Veterinária na PUCPR',
+        'Pós-graduado em bloqueios locorregionais no IEP Ranvier, em São Paulo',
+    ],
     'Dr. Alessandro Martins' => [
         'Residência em Anestesiologia Veterinária na UNESP de Jaboticabal',
         'Especialização em Anestesiologia pela FMVZ-USP',
@@ -158,7 +163,7 @@ $programacao = [
         ['13h00 às 14h00', 'Intervalo demonstrativo, demonstração VXE', 'M.V. Djalmo Pietruka'],
         ['14h00 às 15h00', 'Uso de vasoativos no choque cardiogênico', 'M.V. Renan Matheus Duarte'],
         ['15h00 às 16h00', 'Nutrição no paciente cardiopata na internação / UTI', 'Dra. Ticiane Giselle Bitencourt'],
-        ['16h00 às 17h00', 'Parada de origem cardiogênica: o que fazer', 'Dr. Alessandro Martins'],
+        ['16h00 às 17h00', 'Parada de origem cardiogênica: o que fazer', 'MSc. Daniel Zannin'],
     ],
 ];
 
