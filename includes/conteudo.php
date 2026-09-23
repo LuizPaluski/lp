@@ -29,7 +29,7 @@ $palestrantes = [
     ['nome' => 'Dra. Mayara Travalini',                'tema' => 'Anestesia no paciente cardiopata',                                   'foto' => 'mayara.jpg'],
     ['nome' => 'MSc. Adalberto Monteiro',              'tema' => 'Anticoagulação: o que temos de evidência nos pacientes cardiopatas', 'foto' => 'adalberto.jpg'],
     ['nome' => 'M.V. Jennif da Rocha Esposito',        'tema' => 'Edema pulmonar cardiogênico no pronto atendimento',                  'foto' => 'jeniff.jpg'],
-    ['nome' => 'Prof. Dr. Marlos Sousa',               'tema' => 'Cardiopatias em cães e gatos, congênitas e intervencionismo',        'foto' => ''],
+    ['nome' => 'Prof. Dr. Marlos Sousa',               'tema' => 'Cardiopatias em cães e gatos, congênitas e intervencionismo',        'foto' => 'marlos.jpg'],
     ['nome' => 'Dra. Ticiane Giselle Bitencourt',      'tema' => 'Nutrição no paciente cardiopata na internação / UTI',                'foto' => 'ticiane.jpg'],
 ];
 
@@ -89,6 +89,13 @@ $curriculos = [
         'Pós-graduação em Terapia Intensiva e Emergência Veterinária na UFAPE',
         'Residência em Terapia Intensiva e Emergência na UFAPE',
         'Preceptor da UTI na UFAPE',
+    ],
+    'Prof. Dr. Marlos Sousa' => [
+        'Médico Veterinário com residência em clínica médica de pequenos animais',
+        'Mestrado e doutorado em cardiologia veterinária pela UNESP de Jaboticabal',
+        'Aperfeiçoamento em Cardiologia Veterinária na Cornell University, nos Estados Unidos',
+        'Professor da Universidade de Pádua, na Itália',
+        'Professor de cardiologia veterinária na Universidade Federal do Paraná, em Curitiba, onde coordena o laboratório de cardiologia comparada',
     ],
     'Dra. Ticiane Giselle Bitencourt' => [
         'Graduada em Medicina Veterinária pela Universidade Estadual de Santa Cruz (UESC)',
