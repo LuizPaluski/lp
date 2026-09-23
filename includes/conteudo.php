@@ -29,6 +29,7 @@ $palestrantes = [
     ['nome' => 'Dra. Mayara Travalini',                'tema' => 'Anestesia no paciente cardiopata',                                   'foto' => 'mayara.jpg'],
     ['nome' => 'MSc. Adalberto Monteiro',              'tema' => 'Anticoagulação: o que temos de evidência nos pacientes cardiopatas', 'foto' => 'adalberto.jpg'],
     ['nome' => 'M.V. Jennif da Rocha Esposito',        'tema' => 'Edema pulmonar cardiogênico no pronto atendimento',                  'foto' => 'jeniff.jpg'],
+    ['nome' => 'Prof. Dr. Marlos Sousa',               'tema' => 'Cardiopatias em cães e gatos, congênitas e intervencionismo',        'foto' => ''],
     ['nome' => 'Dra. Ticiane Giselle Bitencourt',      'tema' => 'Nutrição no paciente cardiopata na internação / UTI',                'foto' => 'ticiane.jpg'],
 ];
 
@@ -105,7 +106,7 @@ function retratos_da_linha(string $quem): array
     global $fotos_palestrantes;
 
     $retratos = [];
-    foreach ($fotos_palestrantes as $nome => $foto) {
+    foreach (array_filter($fotos_palestrantes) as $nome => $foto) {
         $onde = strpos($quem, $nome);
         if ($onde !== false) {
             $retratos[$onde] = $foto;
@@ -141,29 +142,29 @@ function iniciais(string $nome): string
 $programacao = [
     '10 de outubro de 2026' => [
         ['08h30 às 09h00', 'Abertura', ''],
-        ['09h00 às 10h00', 'Principais cardiopatias em cães e gatos e sua classificação', 'A confirmar'],
-        ['10h00 às 11h00', 'Guia terapêutico do B2 ao D', 'A confirmar'],
+        ['09h00 às 10h00', 'Nutrição no paciente cardiopata na internação', 'Dra. Ticiane Giselle Bitencourt'],
+        ['10h00 às 11h00', 'Uso de vasoativos no choque cardiogênico', 'M.V. Renan Matheus Duarte'],
         ['11h00 às 11h30', 'Intervalo', ''],
         ['11h30 às 12h30', 'POCUS direcionado ao cardiopata', 'M.V. Djalmo Pietruka'],
-        ['12h30 às 13h00', 'Abordagem inicial do edema pulmonar cardiogênico no pronto atendimento', 'M.V. Jennif da Rocha Esposito'],
-        ['13h00 às 14h30', 'Intervalo, demonstrativo POCUS', 'M.V. Renan Matheus Duarte e M.V. Djalmo Pietruka'],
+        ['12h30 às 13h00', 'Abordagem inicial do edema pulmonar cardiogênico no pronto socorro', 'M.V. Jennif da Rocha Esposito'],
+        ['13h00 às 14h30', 'Intervalo com almoço, prática demonstrativa de POCUS', 'M.V. Renan Matheus Duarte e M.V. Djalmo Pietruka'],
         ['14h30 às 15h30', 'Da oxigenoterapia à ventilação mecânica', 'MSc. Adalberto Monteiro'],
         ['15h30 às 16h30', 'Desmame da ventilação mecânica pós edema cardiogênico', 'M.V. Renan Matheus Duarte'],
         ['16h00 às 16h30', 'Intervalo', ''],
-        ['16h30 às 17h30', 'Monitoração hemodinâmica no paciente em edema cardiogênico no leito de UTI', 'M.V. Djalmo Pietruka'],
-        ['17h30 às 18h30', 'Anestesia no paciente para cirurgias cardíacas e no cardiopata para outras intervenções', 'Dra. Mayara Travalini'],
+        ['16h30 às 17h30', 'Monitoração hemodinâmica no paciente em edema cardiogênico no leito da UTI', 'M.V. Djalmo Pietruka'],
+        ['17h30 às 18h30', 'Anestesia no paciente cardiopata e para procedimentos intervencionistas em cirurgias cardíacas', 'Dra. Mayara Travalini'],
         ['18h30 às 19h30', 'Principais arritmias na internação e seu tratamento', 'Dra. Flavia Mazzo'],
-        ['19h30 às 01h00', 'Coquetel', 'Rooftop'],
+        ['19h30 às 01h00', 'Coquetel', 'Rooftop UFAPE'],
     ],
     '11 de outubro de 2026' => [
-        ['09h00 às 10h00', 'Principais cardiopatias congênitas e seu tratamento', 'A confirmar'],
-        ['10h00 às 11h00', 'Intervencionismo cardiológico', 'A confirmar'],
-        ['11h00 às 12h00', 'Manejo do felino com cardiopatia hipertrófica', 'A combinar'],
-        ['12h00 às 13h00', 'Anticoagulação: o que temos de evidência nos pacientes cardiopatas', 'MSc. Adalberto Monteiro'],
-        ['13h00 às 14h00', 'Intervalo demonstrativo, demonstração VXE', 'M.V. Djalmo Pietruka'],
-        ['14h00 às 15h00', 'Uso de vasoativos no choque cardiogênico', 'M.V. Renan Matheus Duarte'],
-        ['15h00 às 16h00', 'Nutrição no paciente cardiopata na internação / UTI', 'Dra. Ticiane Giselle Bitencourt'],
-        ['16h00 às 17h00', 'Parada de origem cardiogênica: o que fazer', 'MSc. Daniel Zannin'],
+        ['09h00 às 10h00', 'Manejo do felino com cardiopatia hipertrófica', 'A combinar'],
+        ['10h00 às 11h00', 'Anticoagulação: o que temos de evidência em cardiopatas?', 'MSc. Adalberto Monteiro'],
+        ['11h00 às 12h30', 'Parada de origem cardiogênica: o que fazer?', 'MSc. Daniel Zannin'],
+        ['12h30 às 14h00', 'Intervalo com almoço, demonstrativo VExUS', 'M.V. Djalmo Pietruka'],
+        ['14h00 às 15h00', 'Principais cardiopatias em cães e gatos e sua classificação', 'Prof. Dr. Marlos Sousa'],
+        ['15h00 às 16h00', 'Guia terapêutico do B2 ao D', 'Prof. Dr. Marlos Sousa'],
+        ['16h00 às 17h00', 'Principais cardiopatias congênitas e seu tratamento', 'Prof. Dr. Marlos Sousa'],
+        ['17h00 às 18h00', 'Intervencionismo cardiológico', 'Prof. Dr. Marlos Sousa'],
     ],
 ];
 
