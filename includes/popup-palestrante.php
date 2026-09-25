@@ -1,6 +1,6 @@
 <?php
-// O modal atende as duas grades (palestrantes e professores dos workshops), então a
-// chave é o nome. O tema vem do botão, porque o mesmo professor pode aparecer nas duas.
+// O modal é indexado pelo nome, que é como o card identifica quem abriu; o tema vem
+// do botão.
 $cv_modal = [];
 foreach ($curriculos as $nome => $cv) {
     $foto = $fotos_palestrantes[$nome] ?? '';

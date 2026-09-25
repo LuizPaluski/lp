@@ -1,6 +1,5 @@
 <?php
-// Card usado nas duas grades, de palestrantes e de professores dos workshops.
-// Espera $p (nome, tema, foto) e $lp definidos por quem inclui.
+// Card do corpo docente. Espera $p (nome, tema, foto) e $lp definidos por quem inclui.
 $tem_cv = isset($curriculos[$p['nome']]);
 ?>
 <article class="lp-card card-palestrante">
