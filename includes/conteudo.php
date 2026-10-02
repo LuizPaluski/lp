@@ -151,7 +151,7 @@ $programacao = [
         ['17h00 às 18h00', 'Monitoração hemodinâmica no paciente em edema cardiogênico no leito da UTI', 'M.V. Djalmo Pietruka'],
         ['18h00 às 19h00', 'Anestesia no paciente cardiopata e para procedimentos intervencionistas em cirurgias cardíacas', 'Dra. Mayara Travalini'],
         ['19h00 às 20h00', 'Principais arritmias na internação e seu tratamento', 'Dra. Flavia Mazzo'],
-        ['20h00 às 01h00', 'Coquetel', 'Rooftop UFAPE'],
+        ['20h00 às 01h00', 'Coquetel', ''],
     ],
     '11 de outubro de 2026' => [
         ['09h00 às 10h00', 'Manejo do felino com cardiopatia hipertrófica na anestesia', 'Dra. Mayara Travalini'],
