@@ -5,7 +5,7 @@ $selos = ['Presencial', 'Online ao vivo', 'Gravado por 12 meses', 'Certificado U
 
 $numeros = [
     'Data'              => '10 e 11 de outubro de 2026',
-    'Local'             => 'Av. Tiradentes, 11, São Paulo/SP',
+    'Local'             => 'Av. Tiradentes, 960, São Paulo/SP',
     'Carga horária'     => '16 horas de programação',
     'Vagas presenciais' => 'Limitadas a 260 pessoas',
 ];

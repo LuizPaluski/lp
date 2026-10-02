@@ -183,7 +183,7 @@ require __DIR__ . ($no_sistema ? '/includes/header-sistema.php' : '/includes/hea
 <section class="chamada-final">
     <div class="lp-container">
         <h2>Vagas presenciais limitadas a 260 pessoas</h2>
-        <p>10 e 11 de outubro de 2026, Av. Tiradentes, 11, São Paulo/SP. Transmissão online pela plataforma Vimeo.</p>
+        <p>10 e 11 de outubro de 2026, Av. Tiradentes, 960, São Paulo/SP. Transmissão online pela plataforma Vimeo.</p>
         <a class="bt bt-claro" href="#investimento">Fazer minha inscrição</a>
     </div>
 </section>
