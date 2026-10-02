@@ -154,7 +154,7 @@ $programacao = [
         ['19h30 às 01h00', 'Coquetel', 'Rooftop UFAPE'],
     ],
     '11 de outubro de 2026' => [
-        ['09h00 às 10h00', 'Manejo do felino com cardiopatia hipertrófica', 'A combinar'],
+        ['09h00 às 10h00', 'Manejo do felino com cardiopatia hipertrófica na anestesia', 'Dra. Mayara Travalini'],
         ['10h00 às 11h00', 'Anticoagulação: o que temos de evidência em cardiopatas?', 'MSc. Adalberto Monteiro'],
         ['11h00 às 12h30', 'Parada de origem cardiogênica: o que fazer?', 'MSc. Daniel Zannin'],
         ['12h30 às 14h00', 'Intervalo com almoço, demonstrativo VExUS', 'M.V. Djalmo Pietruka'],
